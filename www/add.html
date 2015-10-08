@@ -1,0 +1,49 @@
+<ion-pane ng-controller="ShowCtrl">
+  <ion-header-bar class="bar-dark">
+    <button  ui-sref="home" class="button back-button buttons  button-clear header-item">
+      <i class="icon ion-ios-arrow-back"></i><span class="back-text"><span class="default-title">Back</span><span class="previous-title"></span></span>
+    </button>
+    <h1 class="title">Add property</h1>
+  </ion-header-bar>
+  <ion-content>
+    <div class="list list-inset">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Address</span>
+        <input type="text" id="address-input" placeholder="Street address">
+      </label>
+    
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Price</span>
+        <input type="text" id="price-input" placeholder="Price">
+      </label>
+    
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Body corp</span>
+        <input type="text" id="body-corp-input" placeholder="Body corp">
+      </label>
+    
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Rating</span>
+        <input type="text" id="rating-input" placeholder="Rating">
+      </label>
+    
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Notes</span>
+        <textarea id="notes-input" placeholder="Notes"></textarea>
+      </label>
+
+      <button class="button button-positive button-block" ng-click="saveProperty()">
+        Save property
+      </button>
+      
+      <!--
+      <div class="item item-checkbox">
+        <label class="checkbox">
+          <input type="checkbox">
+        </label>
+        <span class="input-label">Worth considering?</span>
+      </div>
+      -->
+    </div>
+  </ion-content>
+</ion-pane>
