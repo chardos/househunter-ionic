@@ -23,7 +23,8 @@ angular.module('starter', ['ionic'])
 
   $stateProvider.state('home', {
     url: '/',
-    templateUrl: 'index.html'
+    templateUrl: 'index.html',
+    cache: false
   })
 
   $stateProvider.state('add', {
