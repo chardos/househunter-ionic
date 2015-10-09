@@ -33,7 +33,7 @@
         </ion-header-bar>
         <ion-content>
           <ion-refresher on-refresh="doRefresh()"></ion-refresher>
-          <ion-list>
+          <ion-list can-swipe="true">
             <ion-item class="PropertyListing item" ng-repeat="item in properties">
               <div class="PropertyListing-address">{{item.address}}</div>
               <div class="PropertyListing-price">${{item.price}}</div>
