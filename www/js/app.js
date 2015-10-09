@@ -48,6 +48,12 @@ angular.module('starter', ['ionic'])
     $scope.showProperties();
     $scope.$broadcast('scroll.refreshComplete');
   }
+
+  $scope.deleteProperty = function(item){
+    delete localStorage[item.address];
+    $scope.showProperties();
+  }
+  $scope.listCanSwipe = true
 })
 
 .controller('AddCtrl', function($scope, $state) {
