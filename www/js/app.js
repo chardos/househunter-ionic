@@ -34,16 +34,23 @@ angular.module('starter', ['ionic'])
 })
 
 .controller('ListCtrl', function($scope) {
-  $scope.properties = [];
-  for (var i = 0; i < localStorage.length; i++){
-    var parsed = JSON.parse( localStorage.getItem(localStorage.key(i)) );
-    $scope.properties.push( parsed );
-    console.log(parsed.address);
-    //console.log( localStorage.getItem( localStorage.key(i) ));
+
+  $scope.showProperties = function(){
+    $scope.properties = [];
+    for (var i = 0; i < localStorage.length; i++){
+      var parsed = JSON.parse( localStorage.getItem(localStorage.key(i)) );
+      $scope.properties.push( parsed );
+    }
+  }
+  $scope.showProperties();
+
+  $scope.doRefresh = function(){
+    $scope.showProperties();
+    $scope.$broadcast('scroll.refreshComplete');
   }
 })
 
-.controller('ShowCtrl', function($scope) {
+.controller('AddCtrl', function($scope, $state) {
   // Close the new task modal
   $scope.saveProperty = function() {
     var property = {
@@ -54,6 +61,7 @@ angular.module('starter', ['ionic'])
       notes: document.getElementById('notes-input').value
     }
     window.localStorage[property.address] = JSON.stringify(property);
+    $state.go('home')
   };
 });
 
