@@ -61,7 +61,14 @@ angular.module('starter', ['ionic'])
       notes: document.getElementById('notes-input').value
     }
     window.localStorage[property.address] = JSON.stringify(property);
-    $state.go('home')
+    $state.go('home');
+
+    //clear the inputs
+    var wrap = document.querySelector('.PropertyInputs');
+    var inputs = wrap.querySelectorAll('input');
+    [].forEach.call(inputs, function(input) {
+      input.value = '';
+    });
   };
 });
 
