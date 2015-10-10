@@ -19,7 +19,7 @@ angular.module('starter', ['ionic'])
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/')
+  $urlRouterProvider.otherwise('/list')
 
   $stateProvider.state('home', {
     url: '/',
@@ -27,13 +27,24 @@ angular.module('starter', ['ionic'])
     cache: false
   })
 
+  $stateProvider.state('list', {
+    url: '/list',
+    templateUrl: 'list.html',
+    cache: false
+  })
+
   $stateProvider.state('add', {
     url: '/add',
     templateUrl: 'add.html'
   })
+
+  $stateProvider.state('show', {
+    url: '/show/:address',
+    templateUrl: 'show.html'
+  })
 })
 
-.controller('ListCtrl', function($scope) {
+.controller('ListCtrl', function($scope, $state) {
 
   $scope.showProperties = function(){
     $scope.properties = [];
@@ -49,11 +60,15 @@ angular.module('starter', ['ionic'])
     $scope.$broadcast('scroll.refreshComplete');
   }
 
+  $scope.goToDetail = function(){
+    $state.go('show/:address', {address: '123'});
+  }
+
   $scope.deleteProperty = function(item){
     delete localStorage[item.address];
     $scope.showProperties();
   }
-  $scope.listCanSwipe = true
+  $scope.listCanSwipe = true;
 })
 
 .controller('AddCtrl', function($scope, $state) {
@@ -76,5 +91,10 @@ angular.module('starter', ['ionic'])
       input.value = '';
     });
   };
-});
+})
+
+.controller('ShowCtrl', function($scope) {
+  //hi
+  console.log($stateParams);
+})
 

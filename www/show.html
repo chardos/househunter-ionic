@@ -1,0 +1,15 @@
+<ion-pane ng-controller="AddCtrl">
+  <ion-header-bar class="bar-dark">
+    <a  ui-sref="home" class="button back-button buttons  button-clear header-item" ui-sref-opts="{reload: true, notify: true}">
+      <i class="icon ion-ios-arrow-back"></i><span class="back-text"><span class="default-title">Back</span><span class="previous-title"></span></span>
+    </a>
+    <h1 class="title">Add property</h1>
+  </ion-header-bar>
+  <ion-content>
+    <div class="list list-inset PropertyInputs">
+      hey mate
+      <div ng-repeat="val in data | filter:{age: age}:true">{{val.name}}</div>
+      
+    </div>
+  </ion-content>
+</ion-pane>
