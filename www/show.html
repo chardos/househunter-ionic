@@ -1,15 +1,21 @@
-<ion-pane ng-controller="AddCtrl">
+<ion-pane ng-controller="ListCtrl">
   <ion-header-bar class="bar-dark">
-    <a  ui-sref="home" class="button back-button buttons  button-clear header-item" ui-sref-opts="{reload: true, notify: true}">
+    <a  ui-sref="list" class="button back-button buttons  button-clear header-item" ui-sref-opts="{reload: true, notify: true}">
       <i class="icon ion-ios-arrow-back"></i><span class="back-text"><span class="default-title">Back</span><span class="previous-title"></span></span>
     </a>
-    <h1 class="title">Add property</h1>
+    <h1 class="title">Properties</h1>
+    <button class="icon ion-plus button button-clear" ui-sref="add"></button>
   </ion-header-bar>
   <ion-content>
-    <div class="list list-inset PropertyInputs">
-      hey mate
-      <div ng-repeat="val in data | filter:{age: age}:true">{{val.name}}</div>
-      
-    </div>
+    <ion-refresher on-refresh="doRefresh()"></ion-refresher>
+    <ion-list>
+      <ion-item class="PropertyListing item item-icon-right" ng-repeat="item in properties | filter: {address: whichProperty}" ng-click="goToDetail()">
+        <div class="PropertyListing-address">{{item.address}}</div>
+        <div class="PropertyListing-price">${{item.price}}</div>
+        <div class="PropertyListing-body-corp">${{item.body_corp}}</div>
+        <div class="PropertyListing-rating">{{item.rating}}</div>
+        <ion-option-button class="button-assertive" ng-click="deleteProperty(item)">Delete</ion-option-button>
+      </ion-item>
+    </ion-list>
   </ion-content>
 </ion-pane>

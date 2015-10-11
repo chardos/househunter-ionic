@@ -19,17 +19,16 @@ angular.module('starter', ['ionic'])
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/list')
-
-  $stateProvider.state('home', {
-    url: '/',
-    templateUrl: 'index.html',
-    cache: false
-  })
 
   $stateProvider.state('list', {
     url: '/list',
     templateUrl: 'list.html',
+    cache: false
+  })
+
+  $stateProvider.state('detail', {
+    url: '/list/:address',
+    templateUrl: 'show.html',
     cache: false
   })
 
@@ -38,10 +37,8 @@ angular.module('starter', ['ionic'])
     templateUrl: 'add.html'
   })
 
-  $stateProvider.state('show', {
-    url: '/show/:address',
-    templateUrl: 'show.html'
-  })
+  $urlRouterProvider.otherwise('/list')
+
 })
 
 .controller('ListCtrl', function($scope, $state) {
@@ -55,15 +52,13 @@ angular.module('starter', ['ionic'])
   }
   $scope.showProperties();
 
+  $scope.whichProperty=$state.params.address;
+
+
   $scope.doRefresh = function(){
     $scope.showProperties();
     $scope.$broadcast('scroll.refreshComplete');
   }
-
-  $scope.goToDetail = function(){
-    $state.go('show/:address', {address: '123'});
-  }
-
   $scope.deleteProperty = function(item){
     delete localStorage[item.address];
     $scope.showProperties();
