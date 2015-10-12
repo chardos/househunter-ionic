@@ -1,5 +1,9 @@
 /* Empty. Add your own CSS if you like */
 
+.PropertyListing-img{
+  float: left;
+  width: 100px;
+}
 .PropertyListing-address{
   font-size: 20px;
   font-weight: bold;
@@ -25,3 +29,4 @@
 #photo{
   width: 200px;
 }
+.
