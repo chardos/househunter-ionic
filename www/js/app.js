@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic'])
+var houseHunter = angular.module('starter', ['ionic'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -59,65 +59,4 @@ angular.module('starter', ['ionic'])
   }
 }])
 
-.controller('ListCtrl', function($scope, $state) {
-
-  $scope.showProperties = function(){
-    $scope.properties = [];
-    for (var i = 0; i < localStorage.length; i++){
-      var parsed = JSON.parse( localStorage.getItem(localStorage.key(i)) );
-      $scope.properties.push( parsed );
-    }
-  }
-  $scope.showProperties();
-
-  $scope.whichProperty=$state.params.address;
-
-
-  $scope.doRefresh = function(){
-    $scope.showProperties();
-    $scope.$broadcast('scroll.refreshComplete');
-  }
-  $scope.deleteProperty = function(item){
-    delete localStorage[item.address];
-    $scope.showProperties();
-  }
-  $scope.listCanSwipe = true;
-})
-
-.controller('AddCtrl', function($scope, $state, Camera) {
-  // Close the new task modal
-  $scope.saveProperty = function() {
-    var property = {
-      address: document.getElementById('address-input').value,
-      price: document.getElementById('price-input').value,
-      body_corp: document.getElementById('body-corp-input').value,
-      rating: document.getElementById('rating-input').value,
-      notes: document.getElementById('notes-input').value
-    }
-    window.localStorage[property.address] = JSON.stringify(property);
-    $state.go('home');
-
-    //clear the inputs
-    var wrap = document.querySelector('.PropertyInputs');
-    var inputs = wrap.querySelectorAll('input');
-    [].forEach.call(inputs, function(input) {
-      input.value = '';
-    });
-  };
-
-  
-  $scope.getPhoto = function() {
-    Camera.getPicture().then(function(imageURI) {
-      document.getElementById('photo').src = imageURI
-    }, function(err) {
-      console.err(err);
-    });
-  };
-
-})
-
-.controller('ShowCtrl', function($scope) {
-  //hi
-  console.log($stateParams);
-})
 
