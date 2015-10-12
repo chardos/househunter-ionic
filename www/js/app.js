@@ -41,6 +41,24 @@ angular.module('starter', ['ionic'])
 
 })
 
+.factory('Camera', ['$q', function($q) {
+
+  return {
+    getPicture: function(options) {
+      var q = $q.defer();
+
+      navigator.camera.getPicture(function(result) {
+        // Do any magic you need
+        q.resolve(result);
+      }, function(err) {
+        q.reject(err);
+      }, options);
+
+      return q.promise;
+    }
+  }
+}])
+
 .controller('ListCtrl', function($scope, $state) {
 
   $scope.showProperties = function(){
@@ -66,7 +84,7 @@ angular.module('starter', ['ionic'])
   $scope.listCanSwipe = true;
 })
 
-.controller('AddCtrl', function($scope, $state) {
+.controller('AddCtrl', function($scope, $state, Camera) {
   // Close the new task modal
   $scope.saveProperty = function() {
     var property = {
@@ -86,6 +104,16 @@ angular.module('starter', ['ionic'])
       input.value = '';
     });
   };
+
+  
+  $scope.getPhoto = function() {
+    Camera.getPicture().then(function(imageURI) {
+      document.getElementById('photo').src = imageURI
+    }, function(err) {
+      console.err(err);
+    });
+  };
+
 })
 
 .controller('ShowCtrl', function($scope) {
