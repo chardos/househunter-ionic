@@ -19,6 +19,7 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera) {
       notes: document.getElementById('notes-input').value
     }
     window.localStorage[property.address] = JSON.stringify(property);
+    myDataRef.push( property );
     $state.go('list');
 
     //clear the inputs

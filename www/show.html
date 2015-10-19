@@ -10,6 +10,7 @@
     <ion-refresher on-refresh="doRefresh()"></ion-refresher>
     <ion-list>
       <ion-item class="PropertyListing item item-icon-right" ng-repeat="item in properties | filter: {address: whichProperty}" ng-click="goToDetail()">
+        <img class="PropertyDetail-img" src="{{item.imageURL}}">
         <div class="PropertyListing-address">{{item.address}}</div>
         <div class="PropertyListing-price">${{item.price}}</div>
         <div class="PropertyListing-body-corp">${{item.body_corp}}</div>

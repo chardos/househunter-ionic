@@ -15,6 +15,8 @@ var houseHunter = angular.module('starter', ['ionic'])
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
+
+    window.myDataRef = new Firebase('https://amber-fire-5681.firebaseio.com/');
   });
 })
 
@@ -44,7 +46,7 @@ var houseHunter = angular.module('starter', ['ionic'])
 .factory('Camera', ['$q', function($q) {
 
   return {
-    getPicture: function(options) {
+    getPicture: function() {
       var q = $q.defer();
 
       navigator.camera.getPicture(function(result) {
@@ -52,7 +54,11 @@ var houseHunter = angular.module('starter', ['ionic'])
         q.resolve(result);
       }, function(err) {
         q.reject(err);
-      }, options);
+      }, {
+        targetWidth: 640,
+        targetHeight: 480,
+        saveToPhotoAlbum: true
+      });
 
       return q.promise;
     }

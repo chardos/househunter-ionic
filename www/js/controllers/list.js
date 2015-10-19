@@ -21,4 +21,14 @@ houseHunter.controller('ListCtrl', function($scope, $state) {
     $scope.showProperties();
   }
   $scope.listCanSwipe = true;
+  myDataRef.on("value", function(snapshot) {
+    var properties = snapshot.val()
+    for (var key in properties) {
+      var property = properties[key];
+      console.log(property.address);
+      console.log(property.price);
+    }
+  }, function (errorObject) {
+    console.log("The read failed: " + errorObject.code);
+  });
 })
