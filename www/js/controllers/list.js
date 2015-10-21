@@ -46,6 +46,7 @@ houseHunter.controller('ListCtrl', function($scope, $state) {
   $scope.deleteProperty = function(item){
     delete localStorage[item.address];
     $scope.showLocalProperties();
+    myDataRef.child(item.address).remove()
   }
   $scope.listCanSwipe = true;
   
