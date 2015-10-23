@@ -1,8 +1,8 @@
 houseHunter.controller('AddCtrl', function($scope, $state, Camera) {
 
   $scope.getPhoto = function() {
-    Camera.getPicture().then(function(imageURI) {
-      document.getElementById('photo').src = imageURI
+    Camera.getPicture().then(function(imageData) {
+      document.getElementById('photo').src = "data:image/jpeg;base64," + imageData;
     }, function(err) {
       console.err(err);
     });
