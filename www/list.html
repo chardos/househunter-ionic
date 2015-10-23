@@ -10,8 +10,8 @@
         <a href="#/list/{{item.address}}">
           <img class="PropertyListing-img" src="{{item.imageURL}}">
           <div class="PropertyListing-address">{{item.address}}</div>
-          <div class="PropertyListing-price">${{item.price}}</div>
-          <div class="PropertyListing-body-corp">${{item.body_corp}}</div>
+          <div class="PropertyListing-price">Price: ${{item.price}}</div>
+          <div class="PropertyListing-body-corp">Body corp: ${{item.body_corp}}</div>
           <div class="PropertyListing-rating">{{item.rating}}</div>
           <ion-option-button class="button-assertive" ng-click="deleteProperty(item)">Delete</ion-option-button>
         </a>
