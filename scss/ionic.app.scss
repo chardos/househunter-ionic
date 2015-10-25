@@ -31,7 +31,9 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 
 /* Empty. Add your own CSS if you like */
-
+*{
+  box-sizing: border-box;
+}
 
 .has-header{
   top: 43px;
