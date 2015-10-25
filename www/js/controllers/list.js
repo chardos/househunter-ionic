@@ -1,10 +1,12 @@
 houseHunter.controller('ListCtrl', function($scope, $state) {
 
+  console.log('Listing controller reloaded');
+
   $scope.syncLocalToDb = function(){
     console.log('SYNCING FROM DB');
-    localStorage.clear();
-    $scope.properties = [];
     myDataRef.on("value", function(snapshot) { //retrieve from db
+      localStorage.clear();
+      $scope.properties = [];
       var properties = snapshot.val()
       for (var key in properties) {
         var property = properties[key];
@@ -33,9 +35,7 @@ houseHunter.controller('ListCtrl', function($scope, $state) {
     }
   }
 
-
   $scope.showLocalProperties();
-
   $scope.whichProperty=$state.params.address;
 
 
@@ -48,6 +48,9 @@ houseHunter.controller('ListCtrl', function($scope, $state) {
     $scope.showLocalProperties();
     myDataRef.child(item.address).remove()
   }
+  console.log('$scope.properties');
+  console.log($scope.properties);
+  console.log(localStorage);
   $scope.listCanSwipe = true;
   
 })
