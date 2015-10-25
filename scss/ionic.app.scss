@@ -13,7 +13,7 @@ $energized:                       #ffc900 !default;
 $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 */
-$dark: #1d1d1d !default;
+$dark: #050505 !default;
 $gold: #d59600 !default;
 
 
@@ -22,7 +22,10 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
+
+//custom
 @import "typography";
+@import "fonts";
 @import "pages/listing";
 @import "pages/detail";
 @import "components/header";
@@ -31,23 +34,14 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 
 /* Empty. Add your own CSS if you like */
-*{
+/* *{
   box-sizing: border-box;
 }
+ */
 
-.has-header{
-  top: 43px;
-}
+
 
 #photo{
   width: 200px;
 }
 
-
-.PropertyDetail-img{
-  width: 100%;
-}
-
-.PropertyDetail-text-wrap{
-  padding: 20px;
-}
