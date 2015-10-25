@@ -1,6 +1,6 @@
 {
   "name": "househunter",
-  "app_id": "",
+  "app_id": "92ea8b0d",
   "gulpStartupTasks": [
     "sass",
     "watch"
