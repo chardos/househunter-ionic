@@ -1,8 +1,16 @@
 /* Empty. Add your own CSS if you like */
 
+a{
+  color: black;
+  text-decoration: none;
+}
+.has-header{
+  top: 43px;
+}
 .PropertyListing-img{
   float: left;
   width: 100px;
+  margin-right: 10px;
 }
 .PropertyListing-address{
   font-size: 20px;
