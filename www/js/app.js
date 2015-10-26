@@ -52,8 +52,6 @@ var houseHunter = angular.module('starter', ['ionic'])
       navigator.camera.getPicture(function(result) {
         // Do any magic you need
         q.resolve(result);
-        alert('result:')
-        alert(result)
       }, function(err) {
         q.reject(err);
       }, {
