@@ -15,6 +15,9 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera) {
       address: document.getElementById('address-input').value,
       price: document.getElementById('price-input').value,
       body_corp: document.getElementById('body-corp-input').value,
+      indoor_area: document.getElementById('indoor-area-input').value,
+      outdoor_area: document.getElementById('outdoor-area-input').value,
+      orientation: document.getElementById('outdoor-area-input').value,
       rating: document.getElementById('rating-input').value,
       notes: document.getElementById('notes-input').value
     }

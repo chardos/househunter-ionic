@@ -24,6 +24,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "www/lib/ionic/scss/ionic";
 
 //custom
+@import "ionic_overrides";
 @import "typography";
 @import "fonts";
 @import "pages/listing";
