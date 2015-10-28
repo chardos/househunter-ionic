@@ -1,5 +1,7 @@
 houseHunter.controller('AddCtrl', function($scope, $state, Camera) {
 
+  // THIS CONTROLLER IS SHARED BY ADD AND EDIT
+
   $scope.getPhoto = function() {
     Camera.getPicture().then(function(imageData) {
       document.getElementById('photo').src = "data:image/jpeg;base64," + imageData;
@@ -10,32 +12,53 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera) {
     });
   };
 
-  // Close the new task modal
-  $scope.saveProperty = function() {
+  if ($state.params.address) {
+    $scope.currProp = JSON.parse( window.localStorage[$state.params.address] );
+    console.log($scope.currProp);
+  };
+
+  function createHash(){
     var property = {
       imageURL: document.getElementById('photo').src,
-      address: document.getElementById('address-input').value,
-      price: document.getElementById('price-input').value,
-      body_corp: document.getElementById('body-corp-input').value,
-      indoor_area: document.getElementById('indoor-area-input').value,
-      outdoor_area: document.getElementById('outdoor-area-input').value,
-      orientation: document.getElementById('outdoor-area-input').value,
-      rating: document.getElementById('rating-input').value,
-      notes: document.getElementById('notes-input').value
+      address: $('#address-input').val(),
+      price: $('#price-input').val(),
+      body_corp: $('#body-corp-input').val(),
+      indoor_area: $('#indoor-area-input').val(),
+      outdoor_area: $('#outdoor-area-input').val(),
+      orientation: $('#outdoor-area-input').val(),
+      rating: $('#rating-input').val(),
+      notes: $('#notes-input').val()
     }
-    window.localStorage[property.address] = JSON.stringify(property);
-    myDataRef.child(property.address).set( property ); 
-    $state.go('list');
+    console.log(property);
+    return property;
+  }
 
-    //clear the inputs
+  function clearInputs(){
     var wrap = document.querySelector('.PropertyInputs');
     var inputs = wrap.querySelectorAll('input');
     [].forEach.call(inputs, function(input) {
       input.value = '';
     });
+  }
+
+  // Close the new task modal
+  $scope.saveProperty = function() {
+    var property = createHash();
+    window.localStorage[property.address] = JSON.stringify(property);
+    myDataRef.child(property.address).set( property ); 
+    $state.go('list');
+
+    clearInputs()
+    
   };
 
-  
+  $scope.updateProperty = function() {
+    var property = createHash();
+    window.localStorage[property.address] = JSON.stringify(property);
+    myDataRef.child(property.address).set( property ); 
+    $state.go('list');
+    clearInputs()
+  }
 
 
 })

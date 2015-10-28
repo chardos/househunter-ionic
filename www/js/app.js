@@ -39,6 +39,11 @@ var houseHunter = angular.module('starter', ['ionic'])
     templateUrl: 'add.html'
   })
 
+  $stateProvider.state('edit', {
+    url: '/edit/:address',
+    templateUrl: 'edit.html'
+  })
+
   $urlRouterProvider.otherwise('/list')
 
 })
