@@ -44,6 +44,12 @@ var houseHunter = angular.module('starter', ['ionic'])
     templateUrl: 'edit.html'
   })
 
+  $stateProvider.state('compass', {
+    url: '/compass',
+    templateUrl: 'compass.html'
+  })
+
+  //$urlRouterProvider.otherwise('/list')
   $urlRouterProvider.otherwise('/list')
 
 })

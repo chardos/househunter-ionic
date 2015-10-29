@@ -1,0 +1,52 @@
+.CompassPage{
+  padding-top: 50px;
+  text-align: center;
+}
+.CompassPage-para{
+  font-size: 16px;
+  width: 200px;
+  margin: 0 auto;
+  margin-bottom: 25px;
+}
+.CompassPage-degrees{
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+.CompassPage-direction{
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+$compassWidth: 220px;
+.Compass{
+  position: relative;
+  margin: 0 auto;
+  width: $compassWidth;
+  height: $compassWidth;
+  background-image: url('../img/compass-ring.png');
+  background-size: $compassWidth auto;
+  border-radius: 50%;
+}
+
+.Compass-arrow{
+  width: 18px;
+  height: 160px;
+  background-image: url('../img/compass-needle.png');
+  background-size: 18px auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -9px;
+  margin-top: -80px;
+  transition: 0.05s transform;
+}
+.Compass-savebtn-wrap{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 15px;
+  width: 100%;
+}
+

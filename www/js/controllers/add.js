@@ -12,6 +12,10 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera) {
     });
   };
 
+  $scope.openCompass = function() {
+    $state.go('compass');
+  }
+
   if ($state.params.address) {
     $scope.currProp = JSON.parse( window.localStorage[$state.params.address] );
     console.log($scope.currProp);
@@ -25,7 +29,7 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera) {
       body_corp: $('#body-corp-input').val(),
       indoor_area: $('#indoor-area-input').val(),
       outdoor_area: $('#outdoor-area-input').val(),
-      orientation: $('#outdoor-area-input').val(),
+      orientation: $('#orientation-area-input').val(),
       rating: $('#rating-input').val(),
       notes: $('#notes-input').val()
     }
