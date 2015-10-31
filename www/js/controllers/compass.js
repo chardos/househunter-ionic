@@ -1,9 +1,6 @@
 houseHunter.controller('CompassCtrl', function($scope, $state) {
   runCompass = true;
 
-
-
-
   function degreesToWord(deg){
     if(deg > 360 - 22.5 || deg < 0 + 22.5){
       return 'North'
@@ -32,7 +29,7 @@ houseHunter.controller('CompassCtrl', function($scope, $state) {
   }
 
   function onSuccess(heading) {
-    var degrees = 360 - heading.magneticHeading;
+    var degrees = heading.magneticHeading;
     var word = degreesToWord(degrees)
     $('.js-degrees').html(Math.round(degrees));
     $('.js-direction').html(word)
