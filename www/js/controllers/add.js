@@ -1,5 +1,4 @@
-houseHunter.controller('AddCtrl', function($scope, $state, Camera) {
-
+houseHunter.controller('AddCtrl', function($scope, $state, Camera, sharedProperties) {
   // THIS CONTROLLER IS SHARED BY ADD AND EDIT
 
   $scope.getPhoto = function() {
@@ -29,7 +28,7 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera) {
       body_corp: $('#body-corp-input').val(),
       indoor_area: $('#indoor-area-input').val(),
       outdoor_area: $('#outdoor-area-input').val(),
-      orientation: $('#orientation-area-input').val(),
+      orientation: $('#orientation-input').val(),
       rating: $('#rating-input').val(),
       notes: $('#notes-input').val()
     }
@@ -63,6 +62,11 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera) {
     $state.go('list');
     clearInputs()
   }
+
+  $scope.$on('$ionicView.enter', function() {
+    var orientation = sharedProperties.getProperty();
+    document.getElementById('orientation-input').value = orientation
+  });
 
 
 })

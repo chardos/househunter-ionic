@@ -1,5 +1,7 @@
-houseHunter.controller('CompassCtrl', function($scope, $state) {
+houseHunter.controller('CompassCtrl', function($scope, $state, sharedProperties) {
   runCompass = true;
+  var degrees;
+  var word;
 
   function degreesToWord(deg){
     if(deg > 360 - 22.5 || deg < 0 + 22.5){
@@ -29,8 +31,8 @@ houseHunter.controller('CompassCtrl', function($scope, $state) {
   }
 
   function onSuccess(heading) {
-    var degrees = heading.magneticHeading;
-    var word = degreesToWord(degrees)
+    degrees = heading.magneticHeading;
+    word = degreesToWord(degrees)
     $('.js-degrees').html(Math.round(degrees));
     $('.js-direction').html(word)
     $('.Compass-arrow').css(
@@ -63,6 +65,13 @@ houseHunter.controller('CompassCtrl', function($scope, $state) {
     runCompass = false;
   }
 
+  $scope.saveOrientation = function(){
+    $scope.$ionicGoBack();
+    sharedProperties.setProperty(word + '('+parseInt(degrees)+'°)' )
+    runCompass = false;
+  }
 
   
 })
+
+

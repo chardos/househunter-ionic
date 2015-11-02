@@ -77,4 +77,17 @@ var houseHunter = angular.module('starter', ['ionic'])
   }
 }])
 
+.service('sharedProperties', function () {
+  var property = '';
+
+  return {
+    getProperty: function () {
+      return property;
+    },
+    setProperty: function(value) {
+      property = value;
+    }
+  };
+});
+
 
