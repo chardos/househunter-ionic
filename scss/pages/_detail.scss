@@ -12,12 +12,14 @@
 }
 
 .PropertyDetail-item-wrap{
-  display: flex;
-  flex-wrap: wrap;
+  /* display: flex;
+  flex-wrap: wrap; */
 }
 .PropertyDetail-item{
+  float: left;
   width: 50%;
   padding: 15px 10px;
+  min-height: 71px;
   border-bottom: 1px solid rgba(white, 0.1);
   border-right: 1px solid rgba(white, 0.1);
 }
