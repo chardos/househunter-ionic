@@ -26,6 +26,7 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera, sharedPropert
       address: $('#address-input').val(),
       price: $('#price-input').val(),
       body_corp: $('#body-corp-input').val(),
+      council_rates: $('#council-rates-input').val(),
       indoor_area: $('#indoor-area-input').val(),
       outdoor_area: $('#outdoor-area-input').val(),
       orientation: $('#orientation-input').val(),
