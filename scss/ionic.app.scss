@@ -41,7 +41,10 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 }
  */
 
-
+.bluebg{
+  background-color: $light-blue;
+  color: white;
+}
 
 #photo{
   width: 200px;

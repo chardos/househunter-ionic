@@ -6,17 +6,40 @@
     <h1 class="title">Properties</h1>
     <a class="icon ion-edit button button-clear" href="#/edit/{{whichProperty}}"></a>
   </ion-header-bar>
-  <ion-content>
-    <ion-refresher on-refresh="doRefresh()"></ion-refresher>
+  <ion-content class="bluebg">
     <ion-list>
       <div class="PropertyDetail" ng-repeat="item in properties | filter: {address: whichProperty}">
         <img class="PropertyDetail-img" src="{{item.imageURL}}">
-        <div class="PropertyDetail-text-wrap">
-          <div class="PropertyListing-address">{{item.address}}</div>
-          <div class="PropertyListing-price">Price: ${{item.price}}</div>
-          <div class="PropertyListing-body-corp">Body corp: ${{item.body_corp}}</div>
-          <div class="PropertyListing-rating">{{item.rating}}</div>
+        <div class="PropertyDetail-heading">
+          {{item.address}}
         </div>
+        <div class="PropertyDetail-item-wrap">
+          <div class="PropertyDetail-item">
+            <div class="PropertyDetail-label">Price</div>
+            <div class="PropertyDetail-value">${{item.price}}</div>
+            </div>
+          <div class="PropertyDetail-item">
+            <div class="PropertyDetail-label">Front orientation</div>
+            <div class="PropertyDetail-value">{{item.orientation}}</div>
+          </div>
+          <div class="PropertyDetail-item">
+            <div class="PropertyDetail-label">Body corp</div>
+            <div class="PropertyDetail-value">${{item.body_corp}}</div>
+          </div>
+          <div class="PropertyDetail-item">
+            <div class="PropertyDetail-label">Council rates</div>
+            <div class="PropertyDetail-value">${{item.council_rates}}</div>
+          </div>
+          <div class="PropertyDetail-item">
+            <div class="PropertyDetail-label">Outdoor area (sqm)</div>
+            <div class="PropertyDetail-value">{{item.body_corp}}sqm</div>
+          </div>
+          <div class="PropertyDetail-item">
+            <div class="PropertyDetail-label">Indoor area (sqm)</div>
+            <div class="PropertyDetail-value">{{item.council_rates}}sqm</div>
+          </div>
+        </div>
+        
       </div>
     </ion-list>
   </ion-content>
