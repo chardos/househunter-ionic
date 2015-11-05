@@ -12,8 +12,9 @@ var houseHunter = angular.module('starter', ['ionic'])
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
+    ionic.Platform.fullScreen()
     if(window.StatusBar) {
-      StatusBar.styleDefault();
+      StatusBar.hide();
     }
 
     window.myDataRef = new Firebase('https://amber-fire-5681.firebaseio.com/');
