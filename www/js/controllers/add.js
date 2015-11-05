@@ -30,7 +30,6 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera, sharedPropert
       indoor_area: $('#indoor-area-input').val(),
       outdoor_area: $('#outdoor-area-input').val(),
       orientation: $('#orientation-input').val(),
-      rating: $('#rating-input').val(),
       notes: $('#notes-input').val()
     }
     console.log(property);
@@ -51,7 +50,7 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera, sharedPropert
     window.localStorage[property.address] = JSON.stringify(property);
     myDataRef.child(property.address).set( property ); 
     $state.go('list');
-
+    alert('yea')
     clearInputs()
     
   };

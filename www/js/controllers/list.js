@@ -44,6 +44,8 @@ houseHunter.controller('ListCtrl', function($scope, $state) {
     $scope.$broadcast('scroll.refreshComplete');
   }
   $scope.deleteProperty = function(item){
+    console.log('deleting');
+    console.log(item.address);
     delete localStorage[item.address];
     $scope.showLocalProperties();
     myDataRef.child(item.address).remove()
