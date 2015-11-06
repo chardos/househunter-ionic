@@ -8,24 +8,24 @@
   <ion-content>
     <div class="list list-inset PropertyInputs">
       <label class="item item-input">
-        <button class="button button-positive button-small js-add-photo-btn" ng-click="getPhoto()">
+        <button ng-show="!currProperty.imageURL" class="button button-positive button-small js-add-photo-btn" ng-click="getPhoto()">
           Add photo
         </button>
-        <img id="photo">
+        <img id="photo" src="{{currProperty.imageURL}}">
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">Address</span>
-        <input type="text" id="address-input" placeholder="Street address" value="{{currProp.address}}">
+        <input type="text" id="address-input" placeholder="Street address" value="{{currProperty.address}}">
       </label>
     
       <label class="item item-input item-stacked-label">
         <span class="input-label">Price</span>
-        <input type="tel" id="price-input" placeholder="Price" value="{{currProp.price}}">
+        <input type="tel" id="price-input" placeholder="Price" value="{{currProperty.price}}">
       </label>
     
       <label class="item item-input item-stacked-label">
         <span class="input-label">Body corp</span>
-        <input type="tel" id="body-corp-input" placeholder="Body corp" value="{{currProp.body_corp}}">
+        <input type="tel" id="body-corp-input" placeholder="Body corp" value="{{currProperty.body_corp}}">
       </label>
 
       
@@ -36,12 +36,12 @@
     
       <label class="item item-input item-stacked-label">
         <span class="input-label">Indoor area</span>
-        <input type="tel" id="indoor-area-input" placeholder="Indoor area in sqm" value="{{currProp.indoor_area}}">
+        <input type="tel" id="indoor-area-input" placeholder="Indoor area in sqm" value="{{currProperty.indoor_area}}">
       </label>
     
       <label class="item item-input item-stacked-label">
         <span class="input-label">Outdoor area</span>
-        <input type="tel" id="outdoor-area-input" placeholder="Outdoor area in sqm" value="{{currProp.outdoor_area}}">
+        <input type="tel" id="outdoor-area-input" placeholder="Outdoor area in sqm" value="{{currProperty.outdoor_area}}">
       </label>
 
       <label class="item item-input item-stacked-label">
@@ -52,12 +52,12 @@
     
       <label class="item item-input item-stacked-label">
         <span class="input-label">Rating</span>
-        <input type="number" id="rating-input" placeholder="Rating" value="{{currProp.rating}}">
+        <input type="number" id="rating-input" placeholder="Rating" value="{{currProperty.rating}}">
       </label>
     
       <label class="item item-input item-stacked-label">
         <span class="input-label">Notes</span>
-        <textarea id="notes-input" placeholder="Notes" value="{{currProp.notes}}"></textarea>
+        <textarea id="notes-input" placeholder="Notes" value="{{currProperty.notes}}"></textarea>
       </label>
 
       <button class="button button-positive button-block" ng-click="updateProperty()">

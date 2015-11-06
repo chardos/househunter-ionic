@@ -15,10 +15,7 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera, sharedPropert
     $state.go('compass');
   }
 
-  if ($state.params.address) {
-    $scope.currProp = JSON.parse( window.localStorage[$state.params.address] );
-    console.log($scope.currProp);
-  };
+
 
   function createHash(){
     var property = {
@@ -62,6 +59,23 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera, sharedPropert
     $state.go('list');
     clearInputs()
   }
+
+  // ==============================
+  // EDIT PAGE SPECIFIC
+  // ==============================
+
+  //edit page population
+  if ($state.params.address) {
+    $scope.currProperty = JSON.parse( window.localStorage[$state.params.address] );
+    console.log($scope.currProperty);
+  };
+
+
+  // ==============================
+  // COMPASS
+  // ==============================
+ 
+  // COMPASS : ADD ORIENTATION
 
   $scope.$on('$ionicView.enter', function() {
     var orientation = sharedProperties.getProperty();
