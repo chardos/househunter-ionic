@@ -79,7 +79,9 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera, sharedPropert
 
   $scope.$on('$ionicView.enter', function() {
     var orientation = sharedProperties.getProperty();
-    document.getElementById('orientation-input').value = orientation
+    if ( orientation ){
+      document.getElementById('orientation-input').value = orientation
+    }
     sharedProperties.setProperty('')
   });
 
