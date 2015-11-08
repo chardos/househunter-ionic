@@ -29,7 +29,7 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera, sharedPropert
       orientation: $('#orientation-input').val(),
       notes: $('#notes-input').val()
     }
-    console.log(property);
+    console.log('createhash() property:' + property);
     return property;
   }
 
@@ -44,16 +44,17 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera, sharedPropert
   // Close the new task modal
   $scope.saveProperty = function() {
     var property = createHash();
+    console.log('property address: ' + property.address);
     window.localStorage[property.address] = JSON.stringify(property);
     myDataRef.child(property.address).set( property ); 
     $state.go('list');
-    alert('yea')
     clearInputs()
     
   };
 
   $scope.updateProperty = function() {
     var property = createHash();
+    console.log('property address: ' + property.address);
     window.localStorage[property.address] = JSON.stringify(property);
     myDataRef.child(property.address).set( property ); 
     $state.go('list');

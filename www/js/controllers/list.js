@@ -30,8 +30,6 @@ houseHunter.controller('ListCtrl', function($scope, $state) {
       if( typeof parsed == 'object' ){
         $scope.properties.push( parsed );
       }
-      console.log(parsed);
-      console.log('SHOWING LOCAL');
     }
   }
 
@@ -50,9 +48,7 @@ houseHunter.controller('ListCtrl', function($scope, $state) {
     $scope.showLocalProperties();
     myDataRef.child(item.address).remove()
   }
-  console.log('$scope.properties');
-  console.log($scope.properties);
-  console.log(localStorage);
+  
   $scope.listCanSwipe = true;
   
 })

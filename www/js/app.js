@@ -37,12 +37,14 @@ var houseHunter = angular.module('starter', ['ionic'])
 
   $stateProvider.state('add', {
     url: '/add',
-    templateUrl: 'add.html'
+    templateUrl: 'add.html',
+    cache: false
   })
 
   $stateProvider.state('edit', {
     url: '/edit/:address',
-    templateUrl: 'edit.html'
+    templateUrl: 'edit.html',
+    cache: false
   })
 
   $stateProvider.state('compass', {
