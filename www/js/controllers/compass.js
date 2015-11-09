@@ -61,13 +61,14 @@ houseHunter.controller('CompassCtrl', function($scope, $state, sharedProperties)
   updateCompass();
 
   $scope.back = function(){
-    $scope.$ionicGoBack();
+    $scope.closeModal();
     runCompass = false;
   }
 
   $scope.saveOrientation = function(){
-    $scope.$ionicGoBack();
-    sharedProperties.setProperty(word + '('+parseInt(degrees)+'°)' )
+    $scope.closeModal();
+    var orientation = word + '('+parseInt(degrees)+'°)'
+    $('#orientation-input').val(orientation);
     runCompass = false;
   }
 
