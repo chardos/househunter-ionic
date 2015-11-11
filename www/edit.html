@@ -11,7 +11,7 @@
         <button ng-show="!currProperty.imageURL" class="button button-positive button-small js-add-photo-btn" ng-click="getPhoto()">
           Add photo
         </button>
-        <img id="photo" src="{{currProperty.imageURL}}">
+        <img id="photo" ng-show="currProperty.imageURL" src="{{currProperty.imageURL}}">
       </label>
       <label class="item item-input item-stacked-label disabled">
         <span class="input-label">Address</span>
