@@ -1,9 +1,10 @@
+// jshint asi:true
 houseHunter.controller('CompassCtrl', function($scope, $state, sharedProperties) {
   runCompass = true;
   var degrees;
   var word;
 
-  function degreesToWord(deg){
+  function degreesToWord(deg){ 
     if(deg > 360 - 22.5 || deg < 0 + 22.5){
       return 'North'
     }
@@ -39,11 +40,11 @@ houseHunter.controller('CompassCtrl', function($scope, $state, sharedProperties)
       'transform', 
       'rotate('+(heading.magneticHeading * -1)+'deg)'
     )
-  };
+  }
 
   function onError(error) {
     $('.js-degrees').html('CompassError: ' + error.code)
-  };
+  }
 
 
   function updateCompass(){
@@ -52,7 +53,7 @@ houseHunter.controller('CompassCtrl', function($scope, $state, sharedProperties)
       console.log('updating compass');
       if(navigator.compass){
         navigator.compass.getCurrentHeading(onSuccess, onError);
-        if(runCompass == true){
+        if(runCompass === true){
           updateCompass();
         }
       }

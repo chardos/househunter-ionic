@@ -1,3 +1,4 @@
+// jshint asi:true
 houseHunter.controller('AddCtrl', function($scope, $state, Camera, sharedProperties, $ionicModal) {
   // THIS CONTROLLER IS SHARED BY ADD AND EDIT
 
@@ -69,7 +70,7 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera, sharedPropert
   if ($state.params.address) {
     $scope.currProperty = JSON.parse( window.localStorage[$state.params.address] );
     console.log($scope.currProperty);
-  };
+  }
 
 
   // ==============================

@@ -4,6 +4,7 @@
     <button class="icon ion-plus button button-clear" ui-sref="add"></button>
   </ion-header-bar>
   <ion-content class="bluebg">
+  <script> alert('list script view')</script>
     <ion-refresher on-refresh="doRefresh()"></ion-refresher>
     <ion-list can-swipe="listCanSwipe">
       <ion-item class="PropertyListing item" ng-repeat="item in properties">

@@ -1,5 +1,6 @@
+// jshint asi:true
 houseHunter.controller('ListCtrl', function($scope, $state) {
-
+  alert('list view')
   console.log('Listing controller reloaded');
 
   $scope.syncLocalToDb = function(){
@@ -20,7 +21,7 @@ houseHunter.controller('ListCtrl', function($scope, $state) {
       console.log("The read failed: " + errorObject.code);
     });
 
-    //replace local storage
+    //replace local storage 
 
   }
   $scope.showLocalProperties = function(){

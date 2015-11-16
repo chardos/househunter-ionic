@@ -3,6 +3,9 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
+
+// jshint asi:true
+
 var houseHunter = angular.module('starter', ['ionic'])
 
 .run(function($ionicPlatform) {
@@ -18,10 +21,12 @@ var houseHunter = angular.module('starter', ['ionic'])
     }
 
     window.myDataRef = new Firebase('https://amber-fire-5681.firebaseio.com/');
+    alert('start of run')
   });
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
+    alert('start of routes')
 
   $stateProvider.state('list', {
     url: '/list',
@@ -54,11 +59,12 @@ var houseHunter = angular.module('starter', ['ionic'])
 
   //$urlRouterProvider.otherwise('/list')
   $urlRouterProvider.otherwise('/list')
+    alert('end of routes')
 
 })
 
 .factory('Camera', ['$q', function($q) {
-
+  alert('factory start')
   return {
     getPicture: function() {
       var q = $q.defer();
