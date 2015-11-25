@@ -1,6 +1,5 @@
 // jshint asi:true
 houseHunter.controller('ListCtrl', function($scope, $state) {
-  alert('list view')
   console.log('Listing controller reloaded');
 
   $scope.syncLocalToDb = function(){

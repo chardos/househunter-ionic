@@ -21,12 +21,10 @@ var houseHunter = angular.module('starter', ['ionic'])
     }
 
     window.myDataRef = new Firebase('https://amber-fire-5681.firebaseio.com/');
-    alert('start of run')
   });
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
-    alert('start of routes')
 
   $stateProvider.state('list', {
     url: '/list',
@@ -59,12 +57,10 @@ var houseHunter = angular.module('starter', ['ionic'])
 
   //$urlRouterProvider.otherwise('/list')
   $urlRouterProvider.otherwise('/list')
-    alert('end of routes')
 
 })
 
 .factory('Camera', ['$q', function($q) {
-  alert('factory start')
   return {
     getPicture: function() {
       var q = $q.defer();
