@@ -15,6 +15,7 @@ var houseHunter = angular.module('starter', ['ionic'])
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
+    alert('yo')
     ionic.Platform.fullScreen()
     if(window.StatusBar) {
       StatusBar.hide();

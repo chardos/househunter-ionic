@@ -48,7 +48,7 @@ houseHunter.controller('CompassCtrl', function($scope, $state, sharedProperties)
 
 
   function updateCompass(){
-
+    console.log('updating compass');
     setTimeout(function(){
       console.log('updating compass');
       if(navigator.compass){
