@@ -1,5 +1,5 @@
 // jshint asi:true
-houseHunter.controller('CompassCtrl', function($scope, $state, sharedProperties) {
+houseHunter.controller('CompassCtrl', function($scope, $state, compassService) {
 
   $scope.back = function(){
     $scope.closeModal();
@@ -7,7 +7,7 @@ houseHunter.controller('CompassCtrl', function($scope, $state, sharedProperties)
 
   $scope.saveOrientation = function(){
     $scope.closeModal();
-    var orientation = sharedProperties.word + '('+parseInt(sharedProperties.degrees)+'°)'
+    var orientation = compassService.word + '('+parseInt(compassService.degrees)+'°)'
     $('#orientation-input').val(orientation);
   }
 

@@ -1,5 +1,5 @@
 // jshint asi:true
-houseHunter.controller('AddCtrl', function($scope, $state, Camera, sharedProperties, $ionicModal) {
+houseHunter.controller('AddCtrl', function($scope, $state, Camera, compassService, $ionicModal) {
   // THIS CONTROLLER IS SHARED BY ADD AND EDIT
 
   $scope.getPhoto = function() {
@@ -78,11 +78,11 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera, sharedPropert
   // COMPASS : ADD ORIENTATION
 
   $scope.$on('$ionicView.enter', function() {
-    var orientation = sharedProperties.getProperty();
+    var orientation = compassService.getProperty();
     if ( orientation ){
       document.getElementById('orientation-input').value = orientation
     }
-    sharedProperties.setProperty('')
+    compassService.setProperty('')
   });
 
 
@@ -97,12 +97,12 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera, sharedPropert
 
   $scope.openModal = function() {
     $scope.modal.show();
-    sharedProperties.setRunCompass(true);
-    sharedProperties.updateCompass();
+    compassService.setRunCompass(true);
+    compassService.updateCompass();
   };
   $scope.closeModal = function() {
     $scope.modal.hide();
-    sharedProperties.setRunCompass(false);
+    compassService.setRunCompass(false);
   };
   //Cleanup the modal when we're done with it!
   $scope.$on('$destroy', function() {
