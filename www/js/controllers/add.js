@@ -16,8 +16,6 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera, sharedPropert
     $state.go('compass');
   }
 
-
-
   function createHash(){
     var property = {
       imageURL: document.getElementById('photo').src,
@@ -96,11 +94,15 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera, sharedPropert
   }).then(function(modal) {
     $scope.modal = modal;
   });
+
   $scope.openModal = function() {
     $scope.modal.show();
+    sharedProperties.setRunCompass(true);
+    sharedProperties.updateCompass();
   };
   $scope.closeModal = function() {
     $scope.modal.hide();
+    sharedProperties.setRunCompass(false);
   };
   //Cleanup the modal when we're done with it!
   $scope.$on('$destroy', function() {
