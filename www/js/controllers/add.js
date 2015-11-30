@@ -75,17 +75,6 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera, compassServic
   // COMPASS
   // ==============================
  
-  // COMPASS : ADD ORIENTATION
-
-  $scope.$on('$ionicView.enter', function() {
-    var orientation = compassService.getProperty();
-    if ( orientation ){
-      document.getElementById('orientation-input').value = orientation
-    }
-    compassService.setProperty('')
-  });
-
-
   //COMPASS MODAL
 
   $ionicModal.fromTemplateUrl('compass.html', {

@@ -48,16 +48,9 @@ houseHunter.service('compassService', function () {
   var cmp = {
     word: null,
     degrees: null,
-    getProperty: function () {
-      return property;
-    },
-    setProperty: function(value) {
-      property = value;
-    },
     setRunCompass: function(value) {
       runCompass = value;
     },
-
     updateCompass: function(){
       setTimeout(function(){
         if(navigator.compass){
