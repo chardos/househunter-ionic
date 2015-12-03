@@ -1,5 +1,4 @@
 
-
 houseHunter.controller('LoginCtrl', function($scope, $state) {
 
   $(document).on('click', '.js-login', function(){
@@ -11,8 +10,9 @@ houseHunter.controller('LoginCtrl', function($scope, $state) {
       password : pass
     }, function(error, authData) {
       if (error) {
-        console.log("Login Failed!", error);
+        alert("Login Failed!" + error);
       } else {
+        $state.go('list');
         console.log("Authenticated successfully with payload:", authData);
       }
     });

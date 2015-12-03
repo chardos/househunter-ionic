@@ -4,10 +4,13 @@ houseHunter.controller('ListCtrl', function($scope, $state) {
 
   $scope.syncLocalToDb = function(){
     console.log('SYNCING FROM DB');
-    myDataRef.on("value", function(snapshot) { //retrieve from db
+    var uid = myDataRef.getAuth().uid;
+    var userRef = new Firebase('https://amber-fire-5681.firebaseio.com/users/' + uid);
+    userRef.on('value', function(snapshot){ //retrieve from db
       localStorage.clear();
       $scope.properties = [];
       var properties = snapshot.val()
+
       for (var key in properties) {
         var property = properties[key];
         window.localStorage[property.address] = JSON.stringify(property);
@@ -50,5 +53,11 @@ houseHunter.controller('ListCtrl', function($scope, $state) {
   }
   
   $scope.listCanSwipe = true;
+
+  $(document).on('click', '.js-logout', function(){
+    window.myDataRef.unauth();
+    $state.go('login');
+  })
+
   
 })

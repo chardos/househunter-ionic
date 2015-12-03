@@ -26,14 +26,14 @@ var houseHunter = angular.module('starter', ['ionic'])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
-  $stateProvider.state('register', {
-    url: '/register',
-    templateUrl: 'assets/components/register/registerView.html',
-    cache: false
-  })
   $stateProvider.state('login', {
     url: '/login',
     templateUrl: 'assets/components/login/loginView.html',
+    cache: false
+  })
+  $stateProvider.state('register', {
+    url: '/register',
+    templateUrl: 'assets/components/register/registerView.html',
     cache: false
   })
   $stateProvider.state('list', {
@@ -66,7 +66,7 @@ var houseHunter = angular.module('starter', ['ionic'])
   })
 
   //$urlRouterProvider.otherwise('/list')
-  $urlRouterProvider.otherwise('/register')
+  $urlRouterProvider.otherwise('/login')
 
 })
 
@@ -93,7 +93,4 @@ var houseHunter = angular.module('starter', ['ionic'])
 }])
 
 
-$(document).on('click', '.js-logout', function(){
-  window.myDataRef.unauth();
-})
 

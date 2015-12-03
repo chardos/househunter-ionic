@@ -10,8 +10,9 @@ houseHunter.controller('RegisterCtrl', function($scope, $state) {
       password : pass
     }, function(error, userData) {
       if (error) {
-        console.log("Error creating user:", error);
+        alert("Login Failed!" + error);
       } else {
+        $state.go('list');
         console.log("Successfully created user account with uid:", userData.uid);
       }
     });
