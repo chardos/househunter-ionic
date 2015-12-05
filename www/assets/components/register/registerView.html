@@ -1,0 +1,26 @@
+<ion-pane ng-controller="RegisterCtrl">
+  <ion-header-bar class="bar-dark">
+    <h1 class="title">Househunter</h1>
+  </ion-header-bar>
+  <ion-content>
+    <div class="list list-inset PropertyInputs js-add-inputs">
+      <h2>Register</h2>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Email</span>
+        <input type="email" id="registrationEmail" placeholder="Email">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Password</span>
+        <input type="password" id="registrationPassword" placeholder="Password">
+      </label>
+      <button class="button button-positive button-block js-register" ng-click="saveProperty()">
+        Create account
+      </button>
+
+      <a href="#/login">Already have an account?</a>
+
+    </div>
+
+
+  </ion-content>
+</ion-pane>

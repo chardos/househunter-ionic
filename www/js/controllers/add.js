@@ -1,6 +1,7 @@
 // jshint asi:true
 houseHunter.controller('AddCtrl', function($scope, $state, Camera, compassService, $ionicModal) {
   // THIS CONTROLLER IS SHARED BY ADD AND EDIT
+  var uid = myDataRef.getAuth().uid;
 
   $scope.getPhoto = function() {
     Camera.getPicture().then(function(imageData) {
@@ -28,7 +29,6 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera, compassServic
       orientation: $('#orientation-input').val(),
       notes: $('#notes-input').val()
     }
-    console.log('createhash() property:' + property);
     return property;
   }
 
@@ -43,9 +43,9 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera, compassServic
   // Close the new task modal
   $scope.saveProperty = function() {
     var property = createHash();
-    console.log('property address: ' + property.address);
+
     window.localStorage[property.address] = JSON.stringify(property);
-    myDataRef.child(property.address).set( property ); 
+    myDataRef.child("users").child(uid).child(property.address).set( property ); 
     $state.go('list');
     clearInputs()
     
@@ -55,7 +55,7 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera, compassServic
     var property = createHash();
     console.log('property address: ' + property.address);
     window.localStorage[property.address] = JSON.stringify(property);
-    myDataRef.child(property.address).set( property ); 
+    myDataRef.child("users").child(uid).child(property.address).set( property ); 
     $state.go('list');
     clearInputs()
   }

@@ -8,7 +8,7 @@
 
 var houseHunter = angular.module('starter', ['ionic'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $state) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -20,12 +20,23 @@ var houseHunter = angular.module('starter', ['ionic'])
       StatusBar.hide();
     }
 
+
     window.myDataRef = new Firebase('https://amber-fire-5681.firebaseio.com/');
   });
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
 
+  $stateProvider.state('login', {
+    url: '/login',
+    templateUrl: 'assets/components/login/loginView.html',
+    cache: false
+  })
+  $stateProvider.state('register', {
+    url: '/register',
+    templateUrl: 'assets/components/register/registerView.html',
+    cache: false
+  })
   $stateProvider.state('list', {
     url: '/list',
     templateUrl: 'list.html',
@@ -56,7 +67,7 @@ var houseHunter = angular.module('starter', ['ionic'])
   })
 
   //$urlRouterProvider.otherwise('/list')
-  $urlRouterProvider.otherwise('/list')
+  $urlRouterProvider.otherwise('/login')
 
 })
 
@@ -81,5 +92,6 @@ var houseHunter = angular.module('starter', ['ionic'])
     }
   }
 }])
+
 
 
