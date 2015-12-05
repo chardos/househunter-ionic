@@ -8,7 +8,7 @@
 
 var houseHunter = angular.module('starter', ['ionic'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $state) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -19,6 +19,7 @@ var houseHunter = angular.module('starter', ['ionic'])
     if(window.StatusBar) {
       StatusBar.hide();
     }
+
 
     window.myDataRef = new Firebase('https://amber-fire-5681.firebaseio.com/');
   });

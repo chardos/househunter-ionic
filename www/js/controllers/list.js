@@ -2,9 +2,16 @@
 houseHunter.controller('ListCtrl', function($scope, $state) {
   console.log('Listing controller reloaded');
 
+  //PULL FROM DATABASE
   $scope.syncLocalToDb = function(){
-    console.log('SYNCING FROM DB');
-    var uid = myDataRef.getAuth().uid;
+    //Throw user back to login in if not authorized
+    if ( myDataRef.getAuth() ) {
+      var uid = myDataRef.getAuth().uid;
+    }
+    else{
+      $state.go('login');
+    }
+    
     var userRef = new Firebase('https://amber-fire-5681.firebaseio.com/users/' + uid);
     userRef.on('value', function(snapshot){ //retrieve from db
       localStorage.clear();
@@ -26,6 +33,9 @@ houseHunter.controller('ListCtrl', function($scope, $state) {
     //replace local storage 
 
   }
+
+
+
   $scope.showLocalProperties = function(){
     $scope.properties = [];
     for (var i = 0; i < localStorage.length; i++){
