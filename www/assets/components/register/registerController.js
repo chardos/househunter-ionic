@@ -1,6 +1,6 @@
 houseHunter.controller('RegisterCtrl', function($scope, $state) {
 
-  $(document).on('click', '.js-register', function(){
+  $scope.register = function() {
     var email = $('#registrationEmail').val();
     var pass = $('#registrationPassword').val();
 
@@ -16,6 +16,6 @@ houseHunter.controller('RegisterCtrl', function($scope, $state) {
         console.log("Successfully created user account with uid:", userData.uid);
       }
     });
-  })
+  }
 
 })
