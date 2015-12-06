@@ -1,7 +1,7 @@
 
 houseHunter.controller('LoginCtrl', function($scope, $state) {
 
-  $(document).on('click', '.js-login', function(){
+  $scope.login = function() {
     var email = $('#loginEmail').val();
     var pass = $('#loginPassword').val();
 
@@ -16,6 +16,8 @@ houseHunter.controller('LoginCtrl', function($scope, $state) {
         console.log("Authenticated successfully with payload:", authData);
       }
     });
-  })
+    
+  };
+
 
 })
