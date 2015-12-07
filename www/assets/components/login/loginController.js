@@ -1,5 +1,8 @@
 
 houseHunter.controller('LoginCtrl', function($scope, $state) {
+  if ( window.myDataRef && myDataRef.getAuth() ) {
+    $state.go('list');
+  }
 
   $scope.login = function() {
     var email = $('#loginEmail').val();
