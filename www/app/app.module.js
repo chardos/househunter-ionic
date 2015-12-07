@@ -38,7 +38,7 @@ var houseHunter = angular.module('starter', ['ionic'])
   })
   $stateProvider.state('list', {
     url: '/list',
-    templateUrl: 'list.html',
+    templateUrl: 'app/components/list/listView.html',
     cache: false
   })
 
