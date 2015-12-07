@@ -4,6 +4,9 @@ houseHunter.controller('LoginCtrl', function($scope, $state) {
   $scope.login = function() {
     var email = $('#loginEmail').val();
     var pass = $('#loginPassword').val();
+    window.justLoggedIn = true;
+    console.log('justLoggedIn');
+    console.log(window.justLoggedIn);
 
     window.myDataRef.authWithPassword({
       email    : email,

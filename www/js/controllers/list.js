@@ -2,8 +2,11 @@
 houseHunter.controller('ListCtrl', function($scope, $state) {
   console.log('Listing controller reloaded');
 
+
+
   //PULL FROM DATABASE
   $scope.syncLocalToDb = function(){
+    console.log('YEP SYNCING');
     //Throw user back to login in if not authorized
     if ( myDataRef.getAuth() ) {
       var uid = myDataRef.getAuth().uid;
@@ -46,7 +49,6 @@ houseHunter.controller('ListCtrl', function($scope, $state) {
     }
   }
 
-  $scope.showLocalProperties();
   $scope.whichProperty=$state.params.address;
 
 
@@ -64,10 +66,20 @@ houseHunter.controller('ListCtrl', function($scope, $state) {
   
   $scope.listCanSwipe = true;
 
-  $(document).on('click', '.js-logout', function(){
+  //SYNC LOCAL TO DB IF THIS IS FIRST OPEN ? DO A COUNT HERE?
+  if(window.justLoggedIn){
+    console.log('sync to db');
+    $scope.syncLocalToDb();
+    window.justLoggedIn = false;
+  }
+  else{
+    $scope.showLocalProperties();
+  }
+
+  $scope.logout = function(){
     window.myDataRef.unauth();
     $state.go('login');
-  })
+  }
 
   
 })
