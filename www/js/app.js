@@ -28,12 +28,12 @@ var houseHunter = angular.module('starter', ['ionic'])
 
   $stateProvider.state('login', {
     url: '/login',
-    templateUrl: 'assets/components/login/loginView.html',
+    templateUrl: 'app/components/login/loginView.html',
     cache: false
   })
   $stateProvider.state('register', {
     url: '/register',
-    templateUrl: 'assets/components/register/registerView.html',
+    templateUrl: 'app/components/register/registerView.html',
     cache: false
   })
   $stateProvider.state('list', {
@@ -50,7 +50,7 @@ var houseHunter = angular.module('starter', ['ionic'])
 
   $stateProvider.state('add', {
     url: '/add',
-    templateUrl: 'add.html',
+    templateUrl: 'app/components/add/addView.html',
     cache: false
   })
 
@@ -62,7 +62,7 @@ var houseHunter = angular.module('starter', ['ionic'])
 
   $stateProvider.state('compass', {
     url: '/compass',
-    templateUrl: 'compass.html'
+    templateUrl: 'app/components/compass/compassView.html'
   })
 
   //$urlRouterProvider.otherwise('/list')

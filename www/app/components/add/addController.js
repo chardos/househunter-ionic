@@ -13,10 +13,6 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera, compassServic
     });
   };
 
-  $scope.openCompass = function() {
-    $state.go('compass');
-  }
-
   function createHash(){
     var property = {
       imageURL: document.getElementById('photo').src,
@@ -77,7 +73,7 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera, compassServic
  
   //COMPASS MODAL
 
-  $ionicModal.fromTemplateUrl('compass.html', {
+  $ionicModal.fromTemplateUrl('app/components/compass/compassView.html', {
     scope: $scope,
     animation: 'slide-in-up'
   }).then(function(modal) {
