@@ -6,6 +6,7 @@
 
 // jshint asi:true
 
+
 var houseHunter = angular.module('starter', ['ionic'])
 
 .run(function($ionicPlatform, $state) {

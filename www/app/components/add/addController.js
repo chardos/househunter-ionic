@@ -49,7 +49,6 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera, compassServic
 
   $scope.updateProperty = function() {
     var property = createHash();
-    console.log('property address: ' + property.address);
     window.localStorage[property.address] = JSON.stringify(property);
     myDataRef.child("users").child(uid).child(property.address).set( property ); 
     $state.go('list');
@@ -63,7 +62,6 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera, compassServic
   //edit page population
   if ($state.params.address) {
     $scope.currProperty = JSON.parse( window.localStorage[$state.params.address] );
-    console.log($scope.currProperty);
   }
 
 
