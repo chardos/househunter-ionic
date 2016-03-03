@@ -39,6 +39,11 @@ houseHunter.config(function($stateProvider, $urlRouterProvider) {
     templateUrl: 'app/components/compass/compassView.html'
   })
 
+  $stateProvider.state('events', {
+    url: '/events',
+    templateUrl: 'app/components/events/listView.html'
+  })
+
   //$urlRouterProvider.otherwise('/list')
   $urlRouterProvider.otherwise('/login')
 

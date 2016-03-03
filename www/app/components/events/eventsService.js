@@ -1,0 +1,3 @@
+houseHunter.service('eventsService', function () {
+
+});
