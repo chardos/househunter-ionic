@@ -45,6 +45,6 @@ houseHunter.config(function($stateProvider, $urlRouterProvider) {
   })
 
   //$urlRouterProvider.otherwise('/list')
-  $urlRouterProvider.otherwise('/login')
+  $urlRouterProvider.otherwise('/events')
 
 })
