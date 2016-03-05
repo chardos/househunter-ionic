@@ -2,7 +2,7 @@ houseHunter.service('compassService', function () {
   var property = '';
   var runCompass = false;
 
-  function degreesToWord(deg){ 
+  function degreesToWord(deg){
     if(deg > 360 - 22.5 || deg < 0 + 22.5){
       return 'North'
     }
@@ -35,7 +35,7 @@ houseHunter.service('compassService', function () {
     $('.js-degrees').html(Math.round(cmp.degrees));
     $('.js-direction').html(cmp.word)
     $('.Compass-arrow').css(
-      'transform', 
+      'transform',
       'rotate('+(heading.magneticHeading * -1)+'deg)'
     )
   }
@@ -67,4 +67,3 @@ houseHunter.service('compassService', function () {
   return cmp;
 
 });
-
