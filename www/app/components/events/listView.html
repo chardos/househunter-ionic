@@ -9,14 +9,15 @@
   </ion-header-bar>
 
   <ion-content>
-    <div class="Calendar-events">hey</div>
 
     <div class="card" ng-repeat="event in events">
         <div class="item item-divider">
-          {{event.title}}
+          {{ event.date }} <!-- date -->
         </div>
         <div class="item item-text-wrap">
+            <p>{{ event.startTime }}-{{ event.endTime }}</p>
             <p>{{ event.title }}</p>
+            <p>{{ event.eventLocation }}</p><!-- location -->
         </div>
     </div>
 

@@ -9,14 +9,33 @@ houseHunter.controller('EventsCtrl', function($scope, $state) {
   var eventLocation = "Home";
   var notes = "Some notes about this event.";
   var events;
+
+  function filterEvents(events, word){
+    var filteredEvents = events.filter(function(e){return e.title==word})
+    return filteredEvents;
+  }
+  function addDatesToObj(events){
+    var newEvents = events.map(function(e){
+      e.date = moment(e.dtstart).format("MMM Do YYYY")
+      e.startTime = moment(e.dtstart).format("h:mma")
+      e.endTime = moment(e.dtend).format("h:mma")
+      return e
+    })
+    return newEvents;
+  }
+
   var success = function(events) {
-    var filteredEvents = events.filter(function(e){return e.title=="Inspection"})
+    var filteredEvents = filterEvents(events, "Inspection");
     $scope.events = filteredEvents;
   };
-  $scope.events = [];
+  // $scope.events = [];
+
+  var filteredEvents = filterEvents(dummyData, "Inspection");
+  filteredEvents = addDatesToObj(filteredEvents);
+  $scope.events = filteredEvents;
 
   var error = function(message) { alert("Error: " + message); };
 
-  window.plugins.calendar.listEventsInRange(startDate,endDate,success,error);
+  //window.plugins.calendar.listEventsInRange(startDate,endDate,success,error);
 
 })
