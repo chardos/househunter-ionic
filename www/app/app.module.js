@@ -7,7 +7,7 @@
 // jshint asi:true
 
 
-var houseHunter = angular.module('starter', ['ionic'])
+var houseHunter = angular.module('starter', ['ionic', "ngCordova"])
 
 .run(function($ionicPlatform, $state) {
   $ionicPlatform.ready(function() {
@@ -48,6 +48,3 @@ var houseHunter = angular.module('starter', ['ionic'])
     }
   }
 }])
-
-
-

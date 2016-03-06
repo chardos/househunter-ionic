@@ -23,7 +23,8 @@
     "cordova-plugin-splashscreen",
     "com.ionic.keyboard",
     "cordova-plugin-camera",
-    "cordova-plugin-calendar"
+    "cordova-plugin-calendar",
+    "de.appplant.cordova.plugin.local-notification"
   ],
   "cordovaPlatforms": [
     "ios",
