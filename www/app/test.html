@@ -1,0 +1,48 @@
+<button class="js-get-monkeys">Get monkey list</button><br><br>
+<button class="js-create-monkey">Create new monkey</button><br><br>
+
+<input type="text" class="js-delete-input" style="border: 1px solid grey" placeholder="id of monkey to delete">
+<button class="js-delete-monkey">Delete a monkey</button><br><br>
+
+
+<div class="monkey-list"></div>
+
+<script>
+
+$('.js-get-monkeys').click(function(){
+  $.ajax({
+    url: "http://localhost:3000/api/monkeys",
+    method: 'GET'
+  })
+  .done(function( data ) {
+    console.log(data)
+    $('.monkey-list').html(JSON.stringify(data))
+  });
+})
+
+$('.js-create-monkey').click(function(){
+  $.ajax({
+    url: "http://localhost:3000/api/monkeys",
+    method: 'POST',
+    contentType: 'application/json',
+    accepts: 'application/json',
+    data: JSON.stringify({'name': 'Saul'})
+  })
+  .done(function( data ) {
+    console.log('done')
+  });
+})
+
+$('.js-delete-monkey').click(function(){
+  var id = $('.js-delete-input').val();
+  $.ajax({
+    url: "http://localhost:3000/api/monkeys/"+ id +".json",
+    method: 'DELETE',
+    contentType: 'application/json',
+    accepts: 'application/json'
+  })
+  .done(function( data ) {
+    console.log('done')
+  });
+})
+</script>
