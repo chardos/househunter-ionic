@@ -48,6 +48,11 @@ houseHunter.config(function($stateProvider, $urlRouterProvider) {
     url: '/test',
     templateUrl: 'app/test.html'
   })
+  
+  $stateProvider.state('usertest', {
+    url: '/usertest',
+    templateUrl: 'app/usertest.html'
+  })
 
   $urlRouterProvider.otherwise('/test')
   //$urlRouterProvider.otherwise('/test')
