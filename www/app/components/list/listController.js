@@ -3,50 +3,50 @@ houseHunter.controller('ListCtrl', function($scope, $state) {
   console.log('Listing controller reloaded');
 
 
-
   //PULL FROM DATABASE
   $scope.syncLocalToDb = function(){
-    console.log('YEP SYNCING');
-    //Throw user back to login in if not authorized
-    if ( myDataRef.getAuth() ) {
-      var uid = myDataRef.getAuth().uid;
-    }
-    else{
-      $state.go('login');
-    }
-    
-    var userRef = new Firebase('https://amber-fire-5681.firebaseio.com/users/' + uid);
-    userRef.on('value', function(snapshot){ //retrieve from db
-      localStorage.clear();
-      $scope.properties = [];
-      var properties = snapshot.val()
+    // console.log('YEP SYNCING');
+    // //Throw user back to login in if not authorized
+    // if ( myDataRef.getAuth() ) {
+    //   var uid = myDataRef.getAuth().uid;
+    // }
+    // else{
+    //   $state.go('login');
+    // }
+    //
+    // var userRef = new Firebase('https://amber-fire-5681.firebaseio.com/users/' + uid);
+    // userRef.on('value', function(snapshot){ //retrieve from db
+    //   localStorage.clear();
+    //   $scope.properties = [];
+    //   var properties = snapshot.val()
+    //
+    //   for (var key in properties) {
+    //     var property = properties[key];
+    //     window.localStorage[property.address] = JSON.stringify(property);
+    //     console.log('SHOWING DB');
+    //     console.log(property);
+    //     $scope.properties.push( property );
+    //     $state.go('list');
+    //   }
+    // }, function (errorObject) {
+    //   console.log("The read failed: " + errorObject.code);
+    // });
 
-      for (var key in properties) {
-        var property = properties[key];
-        window.localStorage[property.address] = JSON.stringify(property);
-        console.log('SHOWING DB');
-        console.log(property);
-        $scope.properties.push( property );
-        $state.go('list');
-      }
-    }, function (errorObject) {
-      console.log("The read failed: " + errorObject.code);
-    });
-
-    //replace local storage 
+    //replace local storage
 
   }
 
 
 
   $scope.showLocalProperties = function(){
-    $scope.properties = [];
-    for (var i = 0; i < localStorage.length; i++){
-      var parsed = JSON.parse( localStorage.getItem(localStorage.key(i)) );
-      if( typeof parsed == 'object' ){
-        $scope.properties.push( parsed );
-      }
-    }
+    console.log('localprops');
+    // $scope.properties = [];
+    // for (var i = 0; i < localStorage.length; i++){
+    //   var parsed = JSON.parse( localStorage.getItem(localStorage.key(i)) );
+    //   if( typeof parsed == 'object' ){
+    //     $scope.properties.push( parsed );
+    //   }
+    // }
   }
 
   $scope.whichProperty=$state.params.address;
@@ -63,7 +63,7 @@ houseHunter.controller('ListCtrl', function($scope, $state) {
     $scope.showLocalProperties();
     myDataRef.child(item.address).remove()
   }
-  
+
   $scope.listCanSwipe = true;
 
   //SYNC LOCAL TO DB IF THIS IS FIRST OPEN ? DO A COUNT HERE?
@@ -81,5 +81,5 @@ houseHunter.controller('ListCtrl', function($scope, $state) {
     $state.go('login');
   }
 
-  
+
 })
