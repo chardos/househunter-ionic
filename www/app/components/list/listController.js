@@ -5,29 +5,35 @@ houseHunter.controller('ListCtrl', function($scope, $state) {
 
   //PULL FROM DATABASE
   $scope.syncLocalToDb = function(){
-    // console.log('YEP SYNCING');
-    // //Throw user back to login in if not authorized
-    // if ( myDataRef.getAuth() ) {
-    //   var uid = myDataRef.getAuth().uid;
-    // }
-    // else{
-    //   $state.go('login');
-    // }
-    //
-    // var userRef = new Firebase('https://amber-fire-5681.firebaseio.com/users/' + uid);
+    console.log('YEP SYNCING');
+    //Throw user back to login in if not authorized
+
+    $.ajax({
+      url: "http://localhost:3000/api/properties",
+      method: 'GET',
+      headers: {
+        Authorization: localStorage.token
+      }
+    })
+    .done(function( data ) {
+      var properties = data;
+      console.log(properties);
+      console.log(typeof properties);
+      $scope.properties = [];
+      for (var key in properties) {
+        var property = properties[key];
+        window.localStorage[property.address] = JSON.stringify(property);
+        console.log('SHOWING DB');
+        console.log(property);
+        $scope.properties.push( property );
+        $state.go('list');
+      }
+    });
+
     // userRef.on('value', function(snapshot){ //retrieve from db
     //   localStorage.clear();
-    //   $scope.properties = [];
     //   var properties = snapshot.val()
     //
-    //   for (var key in properties) {
-    //     var property = properties[key];
-    //     window.localStorage[property.address] = JSON.stringify(property);
-    //     console.log('SHOWING DB');
-    //     console.log(property);
-    //     $scope.properties.push( property );
-    //     $state.go('list');
-    //   }
     // }, function (errorObject) {
     //   console.log("The read failed: " + errorObject.code);
     // });
@@ -67,7 +73,8 @@ houseHunter.controller('ListCtrl', function($scope, $state) {
   $scope.listCanSwipe = true;
 
   //SYNC LOCAL TO DB IF THIS IS FIRST OPEN ? DO A COUNT HERE?
-  if(window.justLoggedIn){
+  //if(window.justLoggedIn){
+  if(true){
     console.log('sync to db');
     $scope.syncLocalToDb();
     window.justLoggedIn = false;
@@ -77,7 +84,7 @@ houseHunter.controller('ListCtrl', function($scope, $state) {
   }
 
   $scope.logout = function(){
-    window.myDataRef.unauth();
+    localStorage.token = '';
     $state.go('login');
   }
 
