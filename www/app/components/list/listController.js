@@ -4,7 +4,7 @@ houseHunter.controller('ListCtrl', function($scope, $state) {
 
 
   //PULL FROM DATABASE
-  $scope.syncLocalToDb = function(){
+  $scope.pullFromDB = function(){
     console.log('YEP SYNCING');
     //Throw user back to login in if not authorized
 
@@ -19,69 +19,33 @@ houseHunter.controller('ListCtrl', function($scope, $state) {
       var properties = data;
       console.log(properties);
       console.log(typeof properties);
-      $scope.properties = [];
-      for (var key in properties) {
-        var property = properties[key];
-        window.localStorage[property.address] = JSON.stringify(property);
-        console.log('SHOWING DB');
-        console.log(property);
-        $scope.properties.push( property );
-        $state.go('list');
-      }
+      $scope.properties = properties;
     });
 
-    // userRef.on('value', function(snapshot){ //retrieve from db
-    //   localStorage.clear();
-    //   var properties = snapshot.val()
-    //
-    // }, function (errorObject) {
-    //   console.log("The read failed: " + errorObject.code);
-    // });
-
-    //replace local storage
-
   }
 
-
-
-  $scope.showLocalProperties = function(){
-    console.log('localprops');
-    // $scope.properties = [];
-    // for (var i = 0; i < localStorage.length; i++){
-    //   var parsed = JSON.parse( localStorage.getItem(localStorage.key(i)) );
-    //   if( typeof parsed == 'object' ){
-    //     $scope.properties.push( parsed );
-    //   }
-    // }
-  }
 
   $scope.whichProperty=$state.params.address;
 
 
   $scope.doRefresh = function(){
-    $scope.syncLocalToDb();
+    $scope.pullFromDB();
     $scope.$broadcast('scroll.refreshComplete');
   }
   $scope.deleteProperty = function(item){
-    console.log('deleting');
-    console.log(item.address);
-    delete localStorage[item.address];
-    $scope.showLocalProperties();
-    myDataRef.child(item.address).remove()
+    $.ajax({
+      url: "http://localhost:3000/api/properties/"+item.id+".json",
+      method: 'DELETE',
+      headers: {
+        Authorization: localStorage.token
+      }
+    })
+    $('[data-property-id='+item.id+']').parent().remove();
   }
 
   $scope.listCanSwipe = true;
 
-  //SYNC LOCAL TO DB IF THIS IS FIRST OPEN ? DO A COUNT HERE?
-  //if(window.justLoggedIn){
-  if(true){
-    console.log('sync to db');
-    $scope.syncLocalToDb();
-    window.justLoggedIn = false;
-  }
-  else{
-    $scope.showLocalProperties();
-  }
+  $scope.pullFromDB();
 
   $scope.logout = function(){
     localStorage.token = '';

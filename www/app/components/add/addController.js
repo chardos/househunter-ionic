@@ -1,7 +1,6 @@
 // jshint asi:true
 houseHunter.controller('AddCtrl', function($scope, $state, Camera, compassService, $ionicModal) {
   // THIS CONTROLLER IS SHARED BY ADD AND EDIT
-  var uid = myDataRef.getAuth().uid;
 
   $scope.getPhoto = function() {
     Camera.getPicture().then(function(imageData) {
@@ -39,18 +38,31 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera, compassServic
   // Close the new task modal
   $scope.saveProperty = function() {
     var property = createHash();
+    $.ajax({
+      url: "http://localhost:3000/api/properties",
+      method: 'POST',
+      headers: {
+        Authorization: localStorage.token
+      },
+      data: {property: {
+        address: property.address,
+        price: property.price
+      }}
+    })
+    .done(function( data ) {
+      console.log('added?');
+    });
 
     window.localStorage[property.address] = JSON.stringify(property);
-    myDataRef.child("users").child(uid).child(property.address).set( property ); 
     $state.go('list');
     clearInputs()
-    
+
   };
 
   $scope.updateProperty = function() {
     var property = createHash();
     window.localStorage[property.address] = JSON.stringify(property);
-    myDataRef.child("users").child(uid).child(property.address).set( property ); 
+    myDataRef.child("users").child(uid).child(property.address).set( property );
     $state.go('list');
     clearInputs()
   }
@@ -68,7 +80,7 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera, compassServic
   // ==============================
   // COMPASS
   // ==============================
- 
+
   //COMPASS MODAL
 
   $ionicModal.fromTemplateUrl('app/components/compass/compassView.html', {
