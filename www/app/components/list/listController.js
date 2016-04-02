@@ -25,8 +25,9 @@ houseHunter.controller('ListCtrl', function($scope, $state) {
   }
 
 
-  $scope.whichProperty=$state.params.address;
-
+  $scope.propertyId=$state.params.id;
+  console.log('$state.params.address');
+  console.log($state.params.id);
 
   $scope.doRefresh = function(){
     $scope.pullFromDB();

@@ -8,7 +8,7 @@
     <ion-refresher on-refresh="doRefresh()"></ion-refresher>
     <ion-list can-swipe="listCanSwipe">
       <ion-item class="PropertyListing item" ng-repeat="item in properties">
-        <a href="#/list/{{item.address}}" data-property-id="{{item.id}}">
+        <a href="#/list/{{item.id}}" data-property-id="{{item.id}}">
 
           <div class="PropertyListing-text-wrap">
             <div class="PropertyListing-address">{{item.address}}</div>

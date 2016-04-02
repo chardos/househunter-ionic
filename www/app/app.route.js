@@ -17,7 +17,7 @@ houseHunter.config(function($stateProvider, $urlRouterProvider) {
   })
 
   $stateProvider.state('detail', {
-    url: '/list/:address',
+    url: '/list/:id',
     templateUrl: 'app/components/show/showView.html',
     cache: false
   })
