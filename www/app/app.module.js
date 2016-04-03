@@ -21,7 +21,6 @@ var houseHunter = angular.module('starter', ['ionic', "ngCordova"])
       StatusBar.hide();
     }
 
-    window.myDataRef = new Firebase('https://amber-fire-5681.firebaseio.com/');
   });
 })
 

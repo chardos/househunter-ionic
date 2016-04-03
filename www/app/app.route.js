@@ -17,8 +17,8 @@ houseHunter.config(function($stateProvider, $urlRouterProvider) {
   })
 
   $stateProvider.state('detail', {
-    url: '/list/:address',
-    templateUrl: 'show.html',
+    url: '/list/:id',
+    templateUrl: 'app/components/show/showView.html',
     cache: false
   })
 
@@ -29,7 +29,7 @@ houseHunter.config(function($stateProvider, $urlRouterProvider) {
   })
 
   $stateProvider.state('edit', {
-    url: '/edit/:address',
+    url: '/edit/:id',
     templateUrl: 'edit.html',
     cache: false
   })
@@ -44,7 +44,8 @@ houseHunter.config(function($stateProvider, $urlRouterProvider) {
     templateUrl: 'app/components/events/listView.html'
   })
 
-  //$urlRouterProvider.otherwise('/list')
-  $urlRouterProvider.otherwise('/events')
+  $urlRouterProvider.otherwise('/login')
+  //$urlRouterProvider.otherwise('/test')
+  //$urlRouterProvider.otherwise('/test')
 
 })

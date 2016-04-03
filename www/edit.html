@@ -13,32 +13,32 @@
         </button>
         <img id="photo" ng-show="currProperty.imageURL" src="{{currProperty.imageURL}}">
       </label>
-      <label class="item item-input item-stacked-label disabled">
+      <label class="item item-input item-stacked-label">
         <span class="input-label">Address</span>
-        <input type="text" id="address-input" placeholder="Street address" value="{{currProperty.address}}" disabled>
+        <input type="text" id="address-input" placeholder="Street address" value="{{currProperty.address}}">
       </label>
-    
+
       <label class="item item-input item-stacked-label">
         <span class="input-label">Price</span>
         <input type="tel" id="price-input" placeholder="Price" value="{{currProperty.price}}">
       </label>
-    
+
       <label class="item item-input item-stacked-label">
         <span class="input-label">Body corp</span>
         <input type="tel" id="body-corp-input" placeholder="Body corp" value="{{currProperty.body_corp}}">
       </label>
 
-      
+
       <label class="item item-input item-stacked-label">
         <span class="input-label">Council rates</span>
         <input type="tel" id="council-rates-input" placeholder="Council rates" value="{{currProperty.indoor_area}}">
       </label>
-    
+
       <label class="item item-input item-stacked-label">
         <span class="input-label">Indoor area</span>
         <input type="tel" id="indoor-area-input" placeholder="Indoor area in sqm" value="{{currProperty.indoor_area}}">
       </label>
-    
+
       <label class="item item-input item-stacked-label">
         <span class="input-label">Outdoor area</span>
         <input type="tel" id="outdoor-area-input" placeholder="Outdoor area in sqm" value="{{currProperty.outdoor_area}}">
@@ -49,7 +49,7 @@
         <button class="button button-positive button-small" ng-click="openModal()">Open compass</button>
         <input type="tel" id="orientation-input" placeholder="Orientation of front house" value="{{currProperty.orientation}}" />
       </label>
-    
+
       <label class="item item-input item-stacked-label">
         <span class="input-label">Notes</span>
         <textarea id="notes-input" placeholder="Notes">{{currProperty.notes}}</textarea>
@@ -59,8 +59,8 @@
         Update property
       </button>
 
-      
-      
+
+
       <!--
       <div class="item item-checkbox">
         <label class="checkbox">

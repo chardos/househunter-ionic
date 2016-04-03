@@ -4,11 +4,11 @@
       <i class="icon ion-ios-arrow-back"></i><span class="back-text"><span class="default-title">Back</span><span class="previous-title"></span></span>
     </a>
     <h1 class="title">Properties</h1>
-    <a class="icon ion-edit button button-clear" href="#/edit/{{whichProperty}}"></a>
+    <a class="icon ion-edit button button-clear" href="#/edit/{{propertyId}}"></a>
   </ion-header-bar>
   <ion-content class="bluebg">
     <ion-list>
-      <div class="PropertyDetail" ng-repeat="item in properties | filter: {address: whichProperty}">
+      <div class="PropertyDetail" ng-repeat="item in properties | filter: {id: propertyId}">
         <img class="PropertyDetail-img" ng-show="item.imageURL" src="{{item.imageURL}}">
         <div class="PropertyDetail-heading">
           {{item.address}}
@@ -43,7 +43,7 @@
             <div class="PropertyDetail-value">{{item.notes}}</div>
           </div>
         </div>
-        
+
       </div>
     </ion-list>
   </ion-content>
