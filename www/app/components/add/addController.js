@@ -1,5 +1,5 @@
 // jshint asi:true
-houseHunter.controller('AddCtrl', function($scope, $state, Camera, compassService, $ionicModal) {
+houseHunter.controller('AddCtrl', function($scope, $state, Camera, compassService, $ionicModal, propertyService, addService) {
   // THIS CONTROLLER IS SHARED BY ADD AND EDIT
 
   $scope.getPhoto = function() {
@@ -12,20 +12,7 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera, compassServic
     });
   };
 
-  function createHash(){
-    var property = {
-      imageURL: document.getElementById('photo').src,
-      address: $('#address-input').val(),
-      price: $('#price-input').val(),
-      body_corp: $('#body-corp-input').val(),
-      council_rates: $('#council-rates-input').val(),
-      indoor_area: $('#indoor-area-input').val(),
-      outdoor_area: $('#outdoor-area-input').val(),
-      orientation: $('#orientation-input').val(),
-      notes: $('#notes-input').val()
-    }
-    return property;
-  }
+
 
   function clearInputs(){
     var wrap = document.querySelector('.PropertyInputs');
@@ -37,7 +24,7 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera, compassServic
 
   // Close the new task modal
   $scope.saveProperty = function() {
-    var property = createHash();
+    var property = addService.createHash();
     $.ajax({
       url: "http://localhost:3000/api/properties",
       method: 'POST',
@@ -59,17 +46,18 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera, compassServic
 
   };
 
-  $scope.updateProperty = function() {
-    var property = createHash();
-    window.localStorage[property.address] = JSON.stringify(property);
-    myDataRef.child("users").child(uid).child(property.address).set( property );
-    $state.go('list');
-    clearInputs()
-  }
 
   // ==============================
   // EDIT PAGE SPECIFIC
   // ==============================
+  $scope.updateProperty = function() {
+    var updatedProperty = addService.createHash();
+    addService.updateLocal(updatedProperty);
+    addService.updateDB(updatedProperty);
+
+    $state.go('list');
+    clearInputs()
+  }
 
   //edit page population
   if ($state.params.id) {

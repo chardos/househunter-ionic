@@ -2,7 +2,7 @@
 houseHunter.controller('ListCtrl', function($rootScope, $scope, $state, syncService, listService) {
   $scope.propertyId=$state.params.id;
   $scope.doRefresh = function(){
-    $scope.pullFromDB();
+    listService.pullFromDB($scope);
     $scope.$broadcast('scroll.refreshComplete');
   }
   $scope.deleteProperty = function(item){

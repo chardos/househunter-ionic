@@ -1,8 +1,7 @@
 houseHunter.service('listService', function () {
 
-  var o = {};
 
-  o.pullFromDB = function($scope){
+  this.pullFromDB = function($scope){
     $.ajax({
       url: "http://localhost:3000/api/properties",
       method: 'GET',
@@ -18,11 +17,11 @@ houseHunter.service('listService', function () {
   }
 
 
-  o.showProperties = function($scope){
+  this.showProperties = function($scope){
     $scope.properties = JSON.parse(localStorage.properties);
   }
 
-  o.deleteProperty = function(item){
+  this.deleteProperty = function(item){
     $.ajax({
       url: "http://localhost:3000/api/properties/"+item.id+".json",
       method: 'DELETE',
@@ -33,6 +32,5 @@ houseHunter.service('listService', function () {
     $('[data-property-id='+item.id+']').parent().remove();
   }
 
-  return o;
 
 });
