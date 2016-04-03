@@ -72,8 +72,12 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera, compassServic
   // ==============================
 
   //edit page population
-  if ($state.params.address) {
-    $scope.currProperty = JSON.parse( window.localStorage[$state.params.address] );
+  if ($state.params.id) {
+    var properties = JSON.parse(localStorage.properties);
+    var property = properties.filter(function(x){
+      return x.id == $state.params.id;
+    });
+    $scope.currProperty = property[0];
   }
 
 

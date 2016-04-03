@@ -44,16 +44,6 @@ houseHunter.config(function($stateProvider, $urlRouterProvider) {
     templateUrl: 'app/components/events/listView.html'
   })
 
-  $stateProvider.state('test', {
-    url: '/test',
-    templateUrl: 'app/test.html'
-  })
-
-  $stateProvider.state('usertest', {
-    url: '/usertest',
-    templateUrl: 'app/usertest.html'
-  })
-
   $urlRouterProvider.otherwise('/login')
   //$urlRouterProvider.otherwise('/test')
   //$urlRouterProvider.otherwise('/test')

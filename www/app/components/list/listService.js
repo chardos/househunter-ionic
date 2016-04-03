@@ -13,9 +13,14 @@ houseHunter.service('listService', function () {
     .done(function( data ) {
       var properties = data;
       $scope.properties = properties;
+      localStorage.properties = JSON.stringify(properties);
     });
   }
 
+
+  o.showProperties = function($scope){
+    $scope.properties = JSON.parse(localStorage.properties);
+  }
 
   o.deleteProperty = function(item){
     $.ajax({
