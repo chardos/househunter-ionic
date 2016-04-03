@@ -25,22 +25,10 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera, compassServic
   // Close the new task modal
   $scope.saveProperty = function() {
     var property = addService.createHash();
-    $.ajax({
-      url: "http://localhost:3000/api/properties",
-      method: 'POST',
-      headers: {
-        Authorization: localStorage.token
-      },
-      data: {property: {
-        address: property.address,
-        price: property.price
-      }}
-    })
-    .done(function( data ) {
-      console.log('added?');
-    });
+    addService.saveToDB(property);
+    addService.saveToLocal(property);
 
-    window.localStorage[property.address] = JSON.stringify(property);
+    //update local
     $state.go('list');
     clearInputs()
 

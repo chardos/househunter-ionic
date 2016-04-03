@@ -1,5 +1,28 @@
 houseHunter.service('addService', function ($state, propertyService) {
 
+  this.saveToDB = function(property){
+    $.ajax({
+      url: "http://localhost:3000/api/properties",
+      method: 'POST',
+      headers: {
+        Authorization: localStorage.token
+      },
+      data: {property: {
+        address: property.address,
+        price: property.price
+      }}
+    })
+    .done(function( data ) {
+      console.log('added?');
+    });
+  }
+
+  this.saveToLocal = function(property){
+    var properties = propertyService.getLocalProperties();
+    properties.push(property);
+    propertyService.setLocalProperties(properties);
+  }
+
   this.updateLocal = function(updatedProperty){
     var id = $state.params.id;
     var properties = propertyService.getLocalProperties();
