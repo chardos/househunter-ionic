@@ -29,7 +29,7 @@ houseHunter.config(function($stateProvider, $urlRouterProvider) {
   })
 
   $stateProvider.state('edit', {
-    url: '/edit/:address',
+    url: '/edit/:id',
     templateUrl: 'edit.html',
     cache: false
   })

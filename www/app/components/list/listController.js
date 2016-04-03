@@ -1,47 +1,19 @@
 // jshint asi:true
-houseHunter.controller('ListCtrl', function($scope, $state) {
-  console.log('Listing controller reloaded');
-
+houseHunter.controller('ListCtrl', function($scope, $state, syncService, listService) {
 
   //PULL FROM DATABASE
   $scope.pullFromDB = function(){
-    console.log('YEP SYNCING');
-    //Throw user back to login in if not authorized
-
-    $.ajax({
-      url: "http://localhost:3000/api/properties",
-      method: 'GET',
-      headers: {
-        Authorization: localStorage.token
-      }
-    })
-    .done(function( data ) {
-      var properties = data;
-      console.log(properties);
-      console.log(typeof properties);
-      $scope.properties = properties;
-    });
-
+    var properties = listService.pullFromDB($scope);
   }
 
-
   $scope.propertyId=$state.params.id;
-  console.log('$state.params.address');
-  console.log($state.params.id);
 
   $scope.doRefresh = function(){
     $scope.pullFromDB();
     $scope.$broadcast('scroll.refreshComplete');
   }
   $scope.deleteProperty = function(item){
-    $.ajax({
-      url: "http://localhost:3000/api/properties/"+item.id+".json",
-      method: 'DELETE',
-      headers: {
-        Authorization: localStorage.token
-      }
-    })
-    $('[data-property-id='+item.id+']').parent().remove();
+    listService.deleteProperty(item);
   }
 
   $scope.listCanSwipe = true;
