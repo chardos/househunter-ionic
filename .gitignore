@@ -6,3 +6,4 @@ platforms/
 plugins/
 ionic.project
 www/assets/css
+.DS_Store
