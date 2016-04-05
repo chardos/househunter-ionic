@@ -13,7 +13,7 @@ houseHunter.service('addService', function ($state, propertyService) {
       }}
     })
     .done(function( data ) {
-      console.log('added?');
+      $scope.properties.push(data.property)
     });
   }
 

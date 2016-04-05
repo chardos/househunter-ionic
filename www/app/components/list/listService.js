@@ -29,6 +29,7 @@ houseHunter.service('listService', function () {
         Authorization: localStorage.token
       }
     })
+    //ATTN: HERE delete local storage
     $('[data-property-id='+item.id+']').parent().remove();
   }
 

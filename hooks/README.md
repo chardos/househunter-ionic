@@ -18,6 +18,14 @@
 # under the License.
 #
 -->
+
+# Data handling
+
+1. All data gets saved to both the DB, and local storage.
+2. Reading comes from the localstorage.
+3. Localstorage gets synced with the DB upon login, or pull to refresh.
+4. Passing data to $scope.properties will update views.
+
 # Cordova Hooks
 
 This directory may contain scripts used to customize cordova commands. This
@@ -80,4 +88,3 @@ We highly recommend writting your hooks using Node.js so that they are
 cross-platform. Some good examples are shown here:
 
 [http://devgirl.org/2013/11/12/three-hooks-your-cordovaphonegap-project-needs/](http://devgirl.org/2013/11/12/three-hooks-your-cordovaphonegap-project-needs/)
-

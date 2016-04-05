@@ -28,7 +28,6 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera, compassServic
     addService.saveToDB(property);
     addService.saveToLocal(property);
 
-    //update local
     $state.go('list');
     clearInputs()
 
