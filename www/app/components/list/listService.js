@@ -1,4 +1,4 @@
-houseHunter.service('listService', function () {
+houseHunter.service('listService', function ($rootScope) {
 
 
   this.pullFromDB = function($scope){
@@ -11,7 +11,7 @@ houseHunter.service('listService', function () {
     })
     .done(function( data ) {
       var properties = data;
-      $scope.properties = properties;
+      $rootScope.properties = properties;
       localStorage.properties = JSON.stringify(properties);
     });
   }

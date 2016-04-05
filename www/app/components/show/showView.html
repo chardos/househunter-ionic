@@ -8,7 +8,7 @@
   </ion-header-bar>
   <ion-content class="bluebg">
     <ion-list>
-      <div class="PropertyDetail" ng-repeat="item in properties | filter: {id: propertyId}">
+      <div class="PropertyDetail" ng-repeat="item in $root.properties | filter: {id: propertyId}">
         <img class="PropertyDetail-img" ng-show="item.imageURL" src="{{item.imageURL}}">
         <div class="PropertyDetail-heading">
           {{item.address}}

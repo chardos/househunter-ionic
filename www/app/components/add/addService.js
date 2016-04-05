@@ -1,4 +1,4 @@
-houseHunter.service('addService', function ($state, propertyService) {
+houseHunter.service('addService', function ($state, $rootScope, propertyService) {
 
   this.saveToDB = function(property){
     $.ajax({
@@ -13,7 +13,7 @@ houseHunter.service('addService', function ($state, propertyService) {
       }}
     })
     .done(function( data ) {
-      $scope.properties.push(data.property)
+      $rootScope.properties.push(data.property)
     });
   }
 
