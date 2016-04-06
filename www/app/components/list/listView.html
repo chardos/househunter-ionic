@@ -1,8 +1,12 @@
 <ion-pane ng-controller="ListCtrl">
   <ion-header-bar class="bar-dark">
-    <div class="Logout" ng-click="logout()">Logout</div>
+    <div class="Menu">
+      <a class="Menu-item" ng-click=goAdd()>Add property</a>
+      <a class="Menu-item" ng-click=goEvents()>Events</a>
+      <a class="Menu-item" ng-click=logout()>Log out</a>
+    </div>
     <h1 class="title">Properties</h1>
-    <button class="icon ion-plus button button-clear" ui-sref="add"></button>
+    <button class="icon ion-navicon button button-clear" ng-click="toggleMenu()"></button>
   </ion-header-bar>
   <ion-content>
     <ion-refresher on-refresh="doRefresh()"></ion-refresher>

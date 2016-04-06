@@ -2,6 +2,16 @@
 houseHunter.controller('ListCtrl', function($rootScope, $scope, $state, syncService, listService) {
   $scope.propertyId=$state.params.id;
 
+  $scope.goAdd = function(){
+    $state.go('add');
+  }
+  $scope.goEvents = function(){
+    $state.go('events');
+  }
+  $scope.toggleMenu = function(){
+    $('.Menu').toggleClass('m-shown ')
+  }
+
   $scope.doRefresh = function(){
     listService.pullFromDB($scope);
     $scope.$broadcast('scroll.refreshComplete');

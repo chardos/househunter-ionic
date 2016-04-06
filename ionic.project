@@ -1,0 +1,8 @@
+{
+  "name": "househunter",
+  "app_id": "",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ]
+}

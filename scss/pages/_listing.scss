@@ -59,4 +59,20 @@
 .Logout{
   padding: 6px 0 0 5px;
 }
+.Menu{
+  display: none;
+  position: absolute;
+  background-color: #555;
+  width: 100%;
+  left: 0;
+  top: 44px;
 
+  &.m-shown{
+    display: block;
+  }
+}
+.Menu-item{
+  color: white;
+  display: block;
+  padding: 15px;
+}
