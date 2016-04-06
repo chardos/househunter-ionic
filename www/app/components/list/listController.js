@@ -5,6 +5,9 @@ houseHunter.controller('ListCtrl', function($rootScope, $scope, $state, syncServ
   $scope.goAdd = function(){
     $state.go('add');
   }
+  $scope.goCompare = function(){
+    $state.go('compare');
+  }
   $scope.goEvents = function(){
     $state.go('events');
   }
