@@ -14,25 +14,7 @@ houseHunter.service('addService', function ($state, $rootScope, propertyService)
     })
     .done(function( data ) {
       $rootScope.properties.push(data.property)
-      console.log('save to DB');
-      console.log($rootScope.properties);
     });
-  }
-
-  this.saveToLocal = function(property){
-    // var properties = propertyService.getLocalProperties();
-    // properties.push(property);
-    // console.log('save to local');
-    // console.log(properties);
-    // propertyService.setLocalProperties(properties);
-  }
-
-  this.updateLocal = function(updatedProperty){
-    var id = $state.params.id;
-    var properties = propertyService.getLocalProperties();
-    var localPropertyIndex = propertyService.localPropertyIndex(properties, id);
-    $.extend(properties[localPropertyIndex], updatedProperty);
-    propertyService.setLocalProperties(properties);
   }
 
   this.updateDB = function(updatedProperty){

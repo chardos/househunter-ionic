@@ -1,7 +1,7 @@
 houseHunter.service('listService', function ($rootScope, propertyService) {
 
 
-  this.pullFromDB = function($scope){
+  this.getIndex = function(){
     $.ajax({
       url: "http://localhost:3000/api/properties",
       method: 'GET',
@@ -15,11 +15,6 @@ houseHunter.service('listService', function ($rootScope, propertyService) {
     });
   }
 
-
-  this.showProperties = function(){
-    $rootScope.properties = JSON.parse(localStorage.properties);
-  }
-
   this.deleteProperty = function(item){
     $.ajax({
       url: "http://localhost:3000/api/properties/"+item.id+".json",
@@ -29,11 +24,7 @@ houseHunter.service('listService', function ($rootScope, propertyService) {
       }
     })
     //ATTN: HERE delete local storage
-    var properties = propertyService.getLocalProperties();
-    var index = propertyService.localPropertyIndex(properties, item.id);
-    properties.splice(index, 1)
-    propertyService.setLocalProperties(properties)
-    console.log(properties);
+    $('[data-property-id='+item.id+']').parent().remove();
   }
 
 
