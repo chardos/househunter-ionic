@@ -14,13 +14,17 @@ houseHunter.service('addService', function ($state, $rootScope, propertyService)
     })
     .done(function( data ) {
       $rootScope.properties.push(data.property)
+      console.log('save to DB');
+      console.log($rootScope.properties);
     });
   }
 
   this.saveToLocal = function(property){
-    var properties = propertyService.getLocalProperties();
-    properties.push(property);
-    propertyService.setLocalProperties(properties);
+    // var properties = propertyService.getLocalProperties();
+    // properties.push(property);
+    // console.log('save to local');
+    // console.log(properties);
+    // propertyService.setLocalProperties(properties);
   }
 
   this.updateLocal = function(updatedProperty){

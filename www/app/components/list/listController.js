@@ -17,9 +17,11 @@ houseHunter.controller('ListCtrl', function($rootScope, $scope, $state, syncServ
 
   //DISPLAY PROPERTIES
   if($rootScope.synced){
-    listService.showProperties($scope);
+    listService.showProperties();
+    console.log('show properties');
   }
   else{
+    console.log('pull from db');
     listService.pullFromDB($scope);
     $rootScope.synced = true;
   }

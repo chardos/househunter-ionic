@@ -25,8 +25,8 @@ houseHunter.controller('AddCtrl', function($scope, $state, Camera, compassServic
   // Close the new task modal
   $scope.saveProperty = function() {
     var property = addService.createHash();
-    addService.saveToDB(property);
     addService.saveToLocal(property);
+    addService.saveToDB(property);
 
     $state.go('list');
     clearInputs()

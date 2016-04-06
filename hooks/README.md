@@ -22,7 +22,7 @@
 # Data handling
 
 1. All data gets saved to both the DB, and local storage.
-2. Reading comes from the localstorage.
+2. Reading comes from the localstorage (by setting it to $rootScope.properties).
 3. Localstorage gets synced with the DB upon login, or pull to refresh.
 4. Updating data in $rootScope will update views.
 
